@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local validation/extraction artifacts
+.validation_extracts*/
+validation_extracts*/
+*.log
+
+# LaTeX intermediates
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Operating system/editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Large local data and experiments
+docs/
+agent-instructions/
+.codex/
+measurement-db/
+analysis/
+experiments/
+scratch/
+
+# Keep the final upload ZIP tracked; do not add exploratory root-level ZIPs.
+/submission_*.zip

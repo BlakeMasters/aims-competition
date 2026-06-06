@@ -1,0 +1,14 @@
+family,count,best_score,best_log_loss,median_score,worst_score,best_zip
+Compact domain prior,17,-0.62,0.62,-0.63,-0.65,submission_domain_prior_hidden_cent.zip
+Final domain micro-sweep,8,-0.62,0.62,-0.64,-0.68,submission_domain_live_mid610.zip
+Alias/scaled priors,15,-0.63,0.63,-0.63,-0.69,submission_alias_light.zip
+External/domain prior,4,-0.63,0.63,-0.63,-0.64,submission_external_domain_mid600.zip
+Forecast ensemble,5,-0.63,0.63,-0.63,-0.67,submission_forecast_robust_logloss_.zip
+Hierarchical OOD,5,-0.63,0.63,-0.66,-0.67,submission_hier_ood_center600.zip
+Item memory,2,-0.63,0.63,-0.635,-0.64,submission_item_memory_rank.zip
+AUC/rank stack,6,-0.64,0.64,-0.645,-0.71,submission_auc_stack_item_push_labe.zip
+Baseline/calibration,7,-0.64,0.64,-0.66,-0.69,submission_calibrated_constant.zip
+Other,3,-0.64,0.64,-0.65,-0.65,submission_subject_balanced.zip
+Tree blend,3,-0.64,0.64,-0.64,-0.65,submission_tree_blend_maxauc_labeli.zip
+OOD gated,2,-0.65,0.65,-0.66,-0.67,submission_ood_gated.zip
+Semantic/text,3,-0.65,0.65,-0.65,-0.67,submission_semantic_labeling.zip

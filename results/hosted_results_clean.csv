@@ -1,0 +1,83 @@
+submission_id,filename,submitted_at,status,score,approx_log_loss,family
+748569,submission.zip,2026-05-22T09:19,Finished,-0.6900,0.6900,Baseline/calibration
+748587,submission.zip,2026-05-22T09:28,Finished,-0.6900,0.6900,Baseline/calibration
+748659,submission.zip,2026-05-22T10:14,Finished,-0.6500,0.6500,Baseline/calibration
+748662,submission_subject_balanced.zip,2026-05-22T10:14,Finished,-0.6400,0.6400,Other
+748663,submission_subject_conservative.zip,2026-05-22T10:14,Finished,-0.6500,0.6500,Other
+748665,submission_global_prior.zip,2026-05-22T10:14,Finished,-0.6500,0.6500,Other
+748730,submission_calibrated_constant.zip,2026-05-22T10:52,Finished,-0.6400,0.6400,Baseline/calibration
+748731,submission_calibrated_engineered.zip,2026-05-22T10:52,Finished,-0.6600,0.6600,Baseline/calibration
+748732,submission_calibrated_subject.zip,2026-05-22T10:53,Finished,-0.6600,0.6600,Baseline/calibration
+748813,submission.zip,2026-05-22T11:58,Finished,-0.6500,0.6500,Baseline/calibration
+748814,submission_semantic_blend.zip,2026-05-22T11:59,Finished,-0.6700,0.6700,Semantic/text
+748815,submission_semantic_labeling.zip,2026-05-22T11:59,Finished,-0.6500,0.6500,Semantic/text
+748951,submission_alias_light.zip,2026-05-22T13:14,Finished,-0.6300,0.6300,Alias/scaled priors
+748952,submission_alias_medium.zip,2026-05-22T13:15,Finished,-0.6400,0.6400,Alias/scaled priors
+749101,submission_qwen_difficulty.zip,2026-05-22T17:01,Finished,-0.6500,0.6500,Semantic/text
+776588,submission_ood_gated.zip,2026-06-02T16:57,Finished,-0.6500,0.6500,OOD gated
+776589,submission_ood_gated_conservative.zip,2026-06-02T16:57,Finished,-0.6700,0.6700,OOD gated
+776753,submission_alias_light_plus.zip,2026-06-02T19:23,Finished,-0.6900,0.6900,Alias/scaled priors
+776754,submission_alias_auc_push.zip,2026-06-02T19:23,Finished,-0.6400,0.6400,Alias/scaled priors
+777002,submission_alias_centered_light.zip,2026-06-02T22:25,Finished,-0.6800,0.6800,Alias/scaled priors
+777003,submission_alias_centered_warm.zip,2026-06-02T22:25,Finished,-0.6400,0.6400,Alias/scaled priors
+777004,submission_alias_centered_micro.zip,2026-06-02T22:25,Finished,-0.6300,0.6300,Alias/scaled priors
+777005,submission_alias_centered_cool.zip,2026-06-02T22:25,Finished,-0.6300,0.6300,Alias/scaled priors
+777006,submission_domain_prior_hidden_soft.zip,2026-06-02T22:26,Finished,-0.6300,0.6300,Compact domain prior
+777007,submission_domain_prior_hidden_cent.zip,2026-06-02T22:26,Finished,-0.6200,0.6200,Compact domain prior
+777008,submission_item_memory_public.zip,2026-06-02T22:26,Finished,-0.6400,0.6400,Item memory
+777009,submission_item_memory_rank.zip,2026-06-02T22:26,Finished,-0.6300,0.6300,Item memory
+777011,submission_stats_prior_hidden_rando.zip,2026-06-02T22:27,Finished,-0.6300,0.6300,Alias/scaled priors
+777012,submission_scaled_hidden_guard_rand.zip,2026-06-02T22:27,Finished,-0.6400,0.6400,Alias/scaled priors
+777013,submission_scaled_hidden_soft_rando.zip,2026-06-02T22:28,Finished,-0.6300,0.6300,Alias/scaled priors
+777014,submission_scaled_hidden_lowblend_r.zip,2026-06-02T22:28,Finished,-0.6300,0.6300,Alias/scaled priors
+777015,submission_domain_prior_standalone.zip,2026-06-02T22:28,Finished,-0.6300,0.6300,Compact domain prior
+777016,submission_domain_prior_publiccal.zip,2026-06-02T22:28,Finished,-0.6200,0.6200,Compact domain prior
+777017,submission_domain_prior_sweep_loglo.zip,2026-06-02T22:28,Finished,-0.6200,0.6200,Compact domain prior
+777018,submission_alias_auc_calibrated.zip,2026-06-02T22:29,Finished,-0.6300,0.6300,Alias/scaled priors
+777019,submission_alias_auc_labeltuned.zip,2026-06-02T22:29,Finished,-0.6500,0.6500,Alias/scaled priors
+777020,submission_scaled_hybrid_random.zip,2026-06-02T22:29,Finished,-0.6300,0.6300,Alias/scaled priors
+777202,submission_domain_live_sweep_d30.zip,2026-06-03T00:24,Finished,-0.6500,0.6500,Compact domain prior
+777203,submission_domain_live_sweep_soft.zip,2026-06-03T00:25,Finished,-0.6500,0.6500,Compact domain prior
+777204,submission_domain_live_sweep_s085.zip,2026-06-03T00:25,Finished,-0.6200,0.6200,Compact domain prior
+777205,submission_domain_live_pub_a15.zip,2026-06-03T00:25,Finished,-0.6400,0.6400,Compact domain prior
+777206,submission_domain_live_pub_d40.zip,2026-06-03T00:25,Finished,-0.6300,0.6300,Compact domain prior
+777207,submission_domain_live_pub_s115.zip,2026-06-03T00:25,Finished,-0.6500,0.6500,Compact domain prior
+777209,submission_domain_live_mid600.zip,2026-06-03T00:26,Finished,-0.6200,0.6200,Compact domain prior
+777210,submission_domain_live_mid620.zip,2026-06-03T00:26,Finished,-0.6200,0.6200,Compact domain prior
+777211,submission_domain_live_mid640.zip,2026-06-03T00:26,Finished,-0.6200,0.6200,Compact domain prior
+777213,submission_domain_live_hid_d40.zip,2026-06-03T00:26,Finished,-0.6300,0.6300,Compact domain prior
+777214,submission_domain_live_pub_s115.zip,2026-06-03T00:27,Finished,-0.6200,0.6200,Compact domain prior
+777216,submission_domain_live_lowstd.zip,2026-06-03T00:27,Finished,-0.6300,0.6300,Compact domain prior
+777313,submission_external_domain_sweep_s0.zip,2026-06-03T01:15,Finished,-0.6400,0.6400,External/domain prior
+777316,submission_external_domain_mid600.zip,2026-06-03T01:15,Finished,-0.6300,0.6300,External/domain prior
+777318,submission_external_domain_auc.zip,2026-06-03T01:15,Finished,-0.6300,0.6300,External/domain prior
+777320,submission_external_domain_pub_s115.zip,2026-06-03T01:15,Finished,-0.6300,0.6300,External/domain prior
+778072,submission_auc_stack_item_high_labe.zip,2026-06-03T09:16,Finished,-0.6500,0.6500,AUC/rank stack
+778073,submission_auc_stack_item_push_labe.zip,2026-06-03T09:16,Finished,-0.6400,0.6400,AUC/rank stack
+778076,submission_auc_stack_balanced_label.zip,2026-06-03T09:17,Finished,-0.6400,0.6400,AUC/rank stack
+778078,submission_auc_stack_scaled_item30_.zip,2026-06-03T09:17,Finished,-0.6400,0.6400,AUC/rank stack
+778079,submission_auc_stack_scaled_item15_.zip,2026-06-03T09:17,Finished,-0.6500,0.6500,AUC/rank stack
+778160,submission_tree_blend_direct_labeli.zip,2026-06-03T10:38,Finished,-0.6500,0.6500,Tree blend
+778161,submission_tree_blend_maxauc_labeli.zip,2026-06-03T10:38,Finished,-0.6400,0.6400,Tree blend
+778162,submission_tree_blend_sparse_safe_l.zip,2026-06-03T10:39,Finished,-0.6400,0.6400,Tree blend
+778164,submission_pairwise_auc_direct_labe.zip,2026-06-03T10:40,Finished,-0.7100,0.7100,AUC/rank stack
+778165,submission_pairwise_auc_max_labelin.zip,2026-06-03T10:40,Failed,-0.6600,0.6600,AUC/rank stack
+778326,submission_forecast_opt_logloss_top.zip,2026-06-03T16:27,Finished,-0.6700,0.6700,Forecast ensemble
+778403,submission_forecast_robust_logloss_.zip,2026-06-03T18:03,Finished,-0.6300,0.6300,Forecast ensemble
+778404,submission_forecast_robust_logloss_.zip,2026-06-03T18:03,Finished,-0.6300,0.6300,Forecast ensemble
+778469,submission_forecast_robust_logloss_.zip,2026-06-03T19:07,Finished,-0.6300,0.6300,Forecast ensemble
+778474,submission_forecast_robust_logloss_.zip,2026-06-03T19:08,Finished,-0.6300,0.6300,Forecast ensemble
+781812,submission_hier_ood_center600.zip,2026-06-05T10:50,Finished,-0.6300,0.6300,Hierarchical OOD
+781814,submission_hier_ood_interaction_bal.zip,2026-06-05T10:50,Finished,-0.6400,0.6400,Hierarchical OOD
+781888,submission_hier_ood_opt03_label_unc.zip,2026-06-05T12:03,Finished,-0.6600,0.6600,Hierarchical OOD
+781889,submission_hier_ood_opt03.zip,2026-06-05T12:03,Finished,-0.6600,0.6600,Hierarchical OOD
+781929,submission_hier_ood_unc04_label_unc.zip,2026-06-05T13:35,Preparing,-0.6800,0.6800,Hierarchical OOD
+781930,submission_hier_ood_unc02_label_unc.zip,2026-06-05T13:35,Finished,-0.6700,0.6700,Hierarchical OOD
+781993,submission_domain_live_mid610.zip,2026-06-05T15:45,Finished,-0.6200,0.6200,Final domain micro-sweep
+781995,submission_domain_live_mid630.zip,2026-06-05T15:45,Finished,-0.6300,0.6300,Final domain micro-sweep
+781996,submission_domain_live_pub_s105.zip,2026-06-05T15:45,Finished,-0.6500,0.6500,Final domain micro-sweep
+782016,submission_domain_live_mid590.zip,2026-06-05T16:33,Finished,-0.6300,0.6300,Final domain micro-sweep
+782017,submission_domain_live_mid580.zip,2026-06-05T16:34,Finished,-0.6800,0.6800,Final domain micro-sweep
+782024,submission_domain_live_mid570.zip,2026-06-05T16:45,Finished,-0.6300,0.6300,Final domain micro-sweep
+782025,submission_domain_live_mid560.zip,2026-06-05T16:46,Finished,-0.6500,0.6500,Final domain micro-sweep
+782026,submission_domain_live_mid550.zip,2026-06-05T16:46,Finished,-0.6500,0.6500,Final domain micro-sweep
