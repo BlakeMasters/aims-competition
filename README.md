@@ -17,6 +17,8 @@ The final method uses a conservative global center, a shrunk subject prior, and 
 - `submission/`
   - `submission_domain_live_mid600.zip`: uploadable final competition ZIP.
   - `source/`: extracted final submission source for inspection.
+- `unused_submissions/`
+  - Alternate submission ZIPs archived for auditability, excluding the selected final ZIP.
 - `report/`
   - `main.pdf`: technical report.
   - `main.tex`, `references.bib`: report source.
