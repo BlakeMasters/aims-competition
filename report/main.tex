@@ -36,7 +36,7 @@ This report summarizes the submission cycle for the Codabench Predictive Evaluat
 \end{abstract}
 
 \section{Executive Summary}
-This is a competition submission report, not a course-project writeup. It is written around hosted Codabench evidence and the final ZIP intended for publication in the Predictive Evaluation Competition.
+This report is written around hosted Codabench evidence and the final ZIP intended for publication in the Predictive Evaluation Competition.
 
 The selected submission is \path{submission_anchor_fam_b60_debias.zip}. Its hosted negative log-loss was -0.57, which corresponds to ordinary log-loss about 0.57. The competition interface also reported AUC-ROC 0.73; the local \path{eval_finals.txt} file records the hosted score and submission metadata.
 
@@ -316,6 +316,16 @@ This method achieved the competition target of log-loss below 0.60. It replaced 
 Hosted negative log-loss must remain the objective. Public-proxy AUC can diagnose ranking signal, but it should not promote a submission unless cold benchmark-family log-loss and calibration also improve.
 
 The most useful future work is better hidden-run base-rate estimation. That means more robust grouping keys for revealed labels, better small-\(K\) variance control, and subject-family offsets trained without benchmark-family leakage. Active labeling should remain disabled unless it beats platform-random labels while preserving an unbiased category base-rate estimate.
+
+\section{Required Disclosures}
+\paragraph{Plagiarism, bias, and accuracy.}
+I prepared this report in my own words and cited the competition page, starter-kit notes, Measurement DB dataset, and tooling sources where they shaped the submission interface, data assumptions, metrics, or generated artifacts. I distinguished hosted competition evidence from local validation and did not present public-starter-kit constraints, Codabench scores, or prior dataset structure as original contributions. To reduce inaccuracy, I treated \texttt{eval\_finals.txt} and the Codabench-hosted results as the authoritative source for submitted scores, reported negative and failed submission families, and separated AUC-ROC from the primary negative log-loss objective. Remaining risks include benchmark-distribution bias, hidden-category sampling effects, automated leaderboard variance, and possible overinterpretation of local validation. These risks are stated as limitations rather than converted into stronger performance claims.
+
+\paragraph{AI tool use reflection.}
+I used generative AI tools as coding, debugging, experiment-planning, repository-cleanup, and drafting assistants during the submission cycle. They helped inspect artifacts, generate and package submission ZIPs, write validation scripts, summarize hosted results, prepare figures, and draft report language. I treated AI-generated outputs as provisional work products rather than authoritative evidence. For code and submissions, I ran ZIP contract checks, smoke tests, and report builds; for the report, I checked numerical claims against hosted results and generated tables. The main practical benefit was faster iteration through infrastructure and documentation, while final responsibility for competition strategy, interpretation, attribution, and claims remained with me as the submitter.
+
+\paragraph{Impact statement.}
+This work may help improve predictive AI evaluation by showing that public-proxy ranking metrics can be misleading under hidden benchmark shift, and that calibrated use of revealed-label information can materially improve hosted log-loss. It could be misused if the final leaderboard score is treated as broad evidence of general model quality outside this competition setting, or if revealed-label anchoring is interpreted as a substitute for robust external validation. To mitigate that risk, the report frames the result as competition-specific, emphasizes distribution shift and calibration limits, and avoids deployment claims. The environmental impact was limited to local scripting, report generation, and hosted submission evaluation; no large model training was performed for the final method. The repository excludes agent instructions and raw exploratory artifacts so that the published materials focus on reproducible submission evidence rather than unvetted working files.
 
 \section{Clean Publication Repository}
 The clean publication artifact is organized as \path{aims-competition} and published at \url{https://github.com/BlakeMasters/aims-competition}. It contains the final uploadable ZIP, extracted final submission source, archived alternate submission ZIPs under \path{unused_submissions}, this report as PDF and LaTeX source, generated figures and tables, hosted-results files, minimal validation tools, and tiny sample files for smoke testing. It intentionally excludes raw benchmark downloads, validation extraction folders, virtual environments, Python caches, agent instructions, documentation folders, and iterative working artifacts.
