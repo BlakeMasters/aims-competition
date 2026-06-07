@@ -1,5 +1,17 @@
 
 File name	Date	Status	Score	Actions
+783424	submission_anchor_fam_b60.zip	2026-06-06 18:55	Finished	-0.60	  
+783423	submission_anchor_fam_b50_debias.zip	2026-06-06 18:55	Finished	-0.60	  
+783422	submission_anchor_fam_b70_debias.zip	2026-06-06 18:55	Finished	-0.65	  
+783421	submission_anchor_fam_b80_debias.zip	2026-06-06 18:55	Finished	-0.82	  
+783420	submission_anchor_g60_debias.zip	2026-06-06 18:54	Finished	-0.60	  
+782823	submission_anchor_g60.zip	2026-06-06 07:29	Finished	-0.59	  
+782820	submission_anchor_fam_b60_debias.zip	2026-06-06 07:28	Finished	-0.57	Best score. Has an AUC-ROC of 0.73 
+782380	submission_domain_live_mid620_cool0.zip	2026-06-05 22:44	Finished	-0.66	  
+782379	submission_domain_live_mid615_cool0.zip	2026-06-05 22:44	Finished	-0.63	  
+782378	submission_domain_live_mid610_cool0.zip	2026-06-05 22:44	Finished	-0.63	  
+782377	submission_domain_live_mid605_cool0.zip	2026-06-05 22:43	Finished	-0.65	  
+782376	submission_domain_live_mid600_cool0.zip	2026-06-05 22:43	Finished	-0.63	
 782026	submission_domain_live_mid550.zip	2026-06-05 16:46	Finished	-0.65	  
 782025	submission_domain_live_mid560.zip	2026-06-05 16:46	Finished	-0.65	  
 782024	submission_domain_live_mid570.zip	2026-06-05 16:45	Finished	-0.63	  

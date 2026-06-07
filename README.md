@@ -4,18 +4,18 @@ Clean publication repository for the Codabench Predictive Evaluation Competition
 
 ## Final Result
 
-- Selected submission: `submission/submission_domain_live_mid600.zip`
-- Hosted negative log-loss: `-0.62`
-- Approximate log-loss: `0.62`
-- Competition-reported AUC-ROC: `0.72`
-- Method family: compact domain prior
+- Selected submission: `submission/submission_anchor_fam_b60_debias.zip`
+- Hosted negative log-loss: `-0.57`
+- Approximate log-loss: `0.57`
+- Competition-reported AUC-ROC: `0.73`
+- Method family: revealed-label anchored base-rate model
 
-The final method uses a conservative global center, a shrunk subject prior, and a coarse item-domain prior. It does not use exact public item memory, public benchmark lookup, tree/forecast ensembles, or an active adaptive-labeling policy.
+The final method uses the platform's random revealed labels to estimate a hidden-run base rate, then applies a moderate family-aware subject correction. It falls back to the compact domain prior when useful labels are unavailable. It does not use exact public item memory, tree/forecast ensembles, or an active adaptive-labeling policy.
 
 ## Repository Contents
 
 - `submission/`
-  - `submission_domain_live_mid600.zip`: uploadable final competition ZIP.
+  - `submission_anchor_fam_b60_debias.zip`: uploadable final competition ZIP.
   - `source/`: extracted final submission source for inspection.
 - `unused_submissions/`
   - Alternate submission ZIPs archived for auditability, excluding the selected final ZIP.
@@ -36,7 +36,7 @@ The final method uses a conservative global center, a shrunk subject prior, and 
 From the repository root:
 
 ```powershell
-python tools/check_submission_zip.py submission/submission_domain_live_mid600.zip
+python tools/check_submission_zip.py submission/submission_anchor_fam_b60_debias.zip
 python tools/run_smoke_test.py submission/source
 ```
 

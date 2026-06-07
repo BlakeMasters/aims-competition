@@ -1,6 +1,7 @@
 family,count,best_score,best_log_loss,median_score,worst_score,best_zip
-Compact domain prior,17,-0.62,0.62,-0.63,-0.65,submission_domain_prior_hidden_cent.zip
-Final domain micro-sweep,8,-0.62,0.62,-0.64,-0.68,submission_domain_live_mid610.zip
+Label-anchored,7,-0.57,0.57,-0.6,-0.82,submission_anchor_fam_b60_debias.zip
+Compact domain prior,21,-0.62,0.62,-0.63,-0.66,submission_domain_prior_hidden_cent.zip
+Final domain micro-sweep,9,-0.62,0.62,-0.63,-0.68,submission_domain_live_mid610.zip
 Alias/scaled priors,15,-0.63,0.63,-0.63,-0.69,submission_alias_light.zip
 External/domain prior,4,-0.63,0.63,-0.63,-0.64,submission_external_domain_mid600.zip
 Forecast ensemble,5,-0.63,0.63,-0.63,-0.67,submission_forecast_robust_logloss_.zip

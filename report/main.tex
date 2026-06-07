@@ -32,118 +32,114 @@
 \maketitle
 
 \begin{abstract}
-This report summarizes the submission cycle for the Codabench Predictive Evaluation Competition \cite{codabench_competition}. The competition ranks submissions by hosted negative log-loss, with AUC-ROC as a secondary diagnostic metric. Across 82 parsed hosted rows (80 finished scored rows), the best rounded hosted score remained -0.62. The selected final submission is \path{submission_domain_live_mid600.zip}, with hosted score -0.62, approximate log-loss 0.62, and competition-reported AUC-ROC 0.72. The main empirical conclusion is that compact domain-prior submissions transferred better than high-AUC local stacks because hidden test items came from benchmark families absent from public training. Later iterations increased local confidence and ranking metrics, but the hosted log-loss reward favored conservative calibration under benchmark shift.
+This report summarizes the submission cycle for the Codabench Predictive Evaluation Competition \cite{codabench_competition}. The competition ranks submissions by hosted negative log-loss, with AUC-ROC as a secondary diagnostic metric. Across 94 parsed hosted rows (92 finished scored rows), the best rounded hosted score improved to -0.57. The selected final submission is \path{submission_anchor_fam_b60_debias.zip}, with hosted score -0.57, approximate log-loss 0.57, and competition-reported AUC-ROC 0.73. The main empirical conclusion is that compact domain-prior models were the safest no-label baseline, but the successful break below 0.60 log-loss came from using the platform's random revealed labels as an unbiased hidden-category base-rate anchor.
 \end{abstract}
 
 \section{Executive Summary}
-This competition submission report is written around the hosted Codabench evidence and the final ZIP that would be submitted or defended in the Predictive Evaluation Competition.
+This is a competition submission report, not a course-project writeup. It is written around hosted Codabench evidence and the final ZIP intended for publication in the Predictive Evaluation Competition.
 
-The final selected method is \path{submission_domain_live_mid600.zip}. It is a compact formula-only domain-prior runtime with no adaptive labeling policy, no exact item-memory lookup, no public benchmark lookup, and no tree or forecast ensemble at inference time. Its hosted score was -0.62, corresponding to an approximate log-loss of 0.62. The AUC-ROC value for this selected row is 0.72, reported by the competition interface because \path{eval_finals.txt} stores only the hosted score.
+The selected submission is \path{submission_anchor_fam_b60_debias.zip}. Its hosted negative log-loss was -0.57, which corresponds to ordinary log-loss about 0.57. The competition interface also reported AUC-ROC 0.73; the local \path{eval_finals.txt} file records the hosted score and submission metadata.
 
-The original target was hosted log-loss below 0.60, equivalent to a displayed negative log-loss above -0.60. That target was not reached. The result is still informative: the hosted leaderboard repeatedly favored conservative domain-prior variants clustered around -0.62, while higher-complexity AUC, forecast, tree, item-memory, and hierarchical OOD variants generally scored from -0.63 to -0.71. The degradation pattern is consistent with the competition constraint that hidden items are drawn from benchmarks not present in public training.
+The search first plateaued around \(-0.62\). Compact domain-prior submissions transferred better than AUC stacks, tree blends, forecast ensembles, item-memory models, and hierarchical OOD extensions because they made fewer public-benchmark-specific claims. The extra day changed the diagnosis: the best remaining signal was not another public-data feature, but the random revealed labels supplied by the hosted runtime. The final model estimates the hidden category base rate from those labels and adds a moderate family-aware subject correction.
 
-The submission cycle therefore settled on the lower-risk candidate rather than continuing to spend hosted attempts on increasingly confident local proxies. The best practical explanation is calibration under distribution shift: hidden log-loss punishes overconfident wrong probabilities, while public-slice AUC can look excellent when benchmark, subject, condition, or item overlap remains in the validation slice.
+The original target was hosted log-loss below 0.60, equivalent to displayed negative log-loss above -0.60. The final selected anchor reached that target. The result does not mean local high-AUC evidence was trustworthy; it means the submission finally used hidden-run information in a calibrated way.
 
 \section{Problem Setup And Metric}
-The task is amortized prediction of subject-item correctness in the hosted Codabench competition. At runtime, the platform passes each hidden subject-item pair to the submitted predictor. The visible input contains benchmark, condition, subject content, and item content. The output is a probability of binary correctness \cite{predictive_asn,codabench_competition}.
+The task is amortized prediction of subject-item correctness. At runtime, the submitted \path{model.py} receives visible benchmark, condition, subject content, item content, and a small set of previously revealed labels. It must return \(p_i=\Pr(y_i=1)\) for each hidden row \cite{predictive_asn,codabench_competition}.
 
 The primary metric is negative log-loss:
 \[
-  \frac{1}{n} \sum_{i=1}^n \left[y_i \log(p_i) + (1-y_i)\log(1-p_i)\right].
+  \frac{1}{n} \sum_{i=1}^n
+  \left[
+    y_i\log(p_i)+(1-y_i)\log(1-p_i)
+  \right].
 \]
-It is a negative mean log-likelihood, bounded above by zero, so higher leaderboard values are better. A score of -0.62 means an ordinary log-loss of about 0.62. AUC-ROC is secondary. This distinction matters because AUC measures ranking, but log-loss also penalizes probability scale and calibration.
+This is a negative mean log-likelihood, bounded above by zero, so higher leaderboard values are better. A score of -0.57 is approximately log-loss 0.57. AUC-ROC is secondary: AUC measures ranking, while log-loss also penalizes the absolute probability scale.
 
-The hosted hidden-eval setup also constrained what could transfer. The public training data came from the Measurement DB dataset \cite{measurement_db}, but hidden scoring rows were served only through the runtime. The starter kit states that hidden test items come from benchmarks not present in public training; therefore, exact public item memory and public benchmark-specific priors were structurally high risk \cite{predictive_asn}.
+The hosted hidden-evaluation setup is central to the result. Public training data came from Measurement DB \cite{measurement_db}, but hidden test items were served only through the runtime. The starter-kit notes state that hidden test items come from benchmarks not present in public training \cite{predictive_asn}. Exact item memory and public benchmark-specific priors were therefore structurally risky.
 
 \section{Data And Hidden-Evaluation Constraints}
-The active hidden evaluation sampled 5000 hidden items per submission, stratified by organizer data category. The data-category field was not passed to the predictor. If a submission did not include an acquisition policy, the platform chose the same number of labels uniformly at random; if a policy was present, the platform used acquisition scores subject to the same category budget. Because the category was hidden, adaptive labeling could easily optimize a public proxy while skewing the small revealed-label set under hosted sampling.
+The hidden evaluation sampled 5000 items per submission, stratified by organizer data category. The category field was not passed to the predictor. If a submission did not include \path{labeling.py}, the platform revealed a random sample under the same category budget. If a policy was present, the platform used acquisition scores subject to the hidden category budget.
 
-The most important constraint was benchmark-family absence. Public rows were useful for estimating broad subject behavior and coarse item-domain structure, but they were not a reliable source of exact hidden item or benchmark identity. This made cold benchmark-family validation more relevant than row holdout or public-slice probes.
+This made two constraints binding. First, public row holdout was too optimistic because benchmark, subject, condition, and sometimes item overlap remained. Second, active labeling could easily bias the revealed sample. Random labels are noisy, but for base-rate estimation they are valuable because they are approximately unbiased for the hidden category.
 
 \section{Methods Tried}
 \subsection{Notation And Shared Calibration}
-Let \(s\) denote a subject, \(i\) an item, and \(y_{s,i}\in\{0,1\}\) the hidden correctness label. Every method produced a probability \(p_{s,i}\) and then clipped it to \([\epsilon,1-\epsilon]\) to avoid infinite log-loss. Most empirical means used the same shrinkage pattern:
+Let \(s\) denote a subject, \(i\) an item, and \(y_{s,i}\in\{0,1\}\) the correctness label. Every submitted method produced a probability \(p_{s,i}\), clipped to \([\epsilon,1-\epsilon]\) to avoid infinite log-loss. Many estimates used shrinkage:
 \[
   \operatorname{shrink}(\bar y_g,n_g;c,\tau)
   =
   \frac{n_g\bar y_g+\tau c}{n_g+\tau},
 \]
-where \(g\) is a group such as a subject, item, or domain, \(c\) is a global center, \(n_g\) is the number of public observations in the group, and \(\tau\) controls how aggressively the estimate is pulled back toward the global center. This shrinkage was important because hidden benchmark families were not present in public training.
-
-Several candidates also used a one-dimensional calibration transform:
+where \(g\) is a group, \(c\) is a base rate, \(n_g\) is support, and \(\tau\) controls pullback toward \(c\). Several models also used temperature-style calibration:
 \[
-  p' = \sigma\left(\alpha+\beta\,\operatorname{logit}(p)\right),
+  p'=\sigma\left(\alpha+\beta\,\operatorname{logit}(p)\right),
 \]
-where \(\sigma\) is the logistic function. Values of \(\beta<1\) cool the prediction spread; values of \(\beta>1\) make predictions sharper. The hosted results consistently favored cooler, more conservative calibration.
+where \(\beta<1\) cools the probability spread and \(\beta>1\) sharpens it.
 
-\subsection{Global Centers, Subject Priors, And Calibration}
-The first family tested whether the hidden leaderboard could be explained mostly by base rate and subject ability. The simplest model was a constant:
+\subsection{Global Centers And Subject Priors}
+The simplest candidates predicted a constant:
 \[
   p_{s,i}=c.
 \]
-The next variant added a subject ability term estimated from public observations for the same visible subject name:
+Subject-prior variants added a shrunk visible-subject ability estimate:
 \[
   \hat p_s=\frac{n_s\bar y_s+\tau_s c}{n_s+\tau_s},
   \qquad
-  p_{s,i}=\operatorname{clip}\left((1-\lambda_s)c+\lambda_s\hat p_s,\epsilon,1-\epsilon\right),
+  p_{s,i}=(1-\lambda_s)c+\lambda_s\hat p_s,
+  \qquad
+  \lambda_s=\frac{n_s}{n_s+\tau_s}.
 \]
-with \(\lambda_s=n_s/(n_s+\tau_s)\). In words, subjects with many public observations received a stronger subject-specific estimate; low-support or ambiguous subjects stayed close to the global rate. Alias matching was used to connect visible subject descriptions to public subject records, but the method intentionally avoided relying on hidden item identity.
+Alias matching connected visible subject descriptions to public subject records. These variants were useful calibration baselines, generally scoring around -0.63 to -0.66, but subject priors alone did not identify hidden benchmark difficulty.
 
-These baseline and calibration variants produced hosted scores around -0.63 to -0.66. Their main value was diagnostic: the hidden task rewarded calibrated base rates more than highly specialized public-row fits, but subject priors alone did not add enough item information to beat the -0.62 plateau.
-
-\subsection{Benchmark, Condition, And Light Engineered Priors}
-Early engineered variants added public benchmark and condition means when a public group was available:
+\subsection{Benchmark, Condition, And Engineered Priors}
+Early engineered variants added public benchmark and condition means:
 \[
-  p_{s,i} = c + a_s + b_{\mathrm{bench}(i)} + q_{\mathrm{cond}(i)},
+  p_{s,i}=c+a_s+b_{\mathrm{bench}(i)}+q_{\mathrm{cond}(i)}.
 \]
-where \(a_s\) is a subject adjustment, \(b\) is a benchmark adjustment, and \(q\) is a condition adjustment. These terms were always shrunk toward zero. This family was useful on public validation slices, but it had an obvious transfer risk: the competition hidden items are from benchmark families absent from public training. When a hidden benchmark has no public rows, exact benchmark and condition priors either disappear or fall back to broad averages. That made this family more of a calibration baseline than a final strategy.
+The terms were shrunk toward zero. This improved public-slice validation but had poor hidden-transfer logic: benchmarks not present in public training cannot be recognized by exact public benchmark means. These features therefore became fallback calibration signals rather than final decision rules.
 
 \subsection{Semantic And Text Difficulty Models}
-The semantic/text family tried to infer item difficulty from visible item content and subject descriptors. A generic form was:
+Semantic/text models attempted to infer item difficulty from visible item content and subject descriptors:
 \[
   z_{s,i}
   =
-  \beta_0
-  + \beta_s^\top \phi_s(x_s)
-  + \beta_i^\top \phi_i(x_i)
-  + \beta_{si}^\top \phi_{si}(x_s,x_i),
+  \beta_0+\beta_s^\top\phi_s(x_s)
+  +\beta_i^\top\phi_i(x_i)
+  +\beta_{si}^\top\phi_{si}(x_s,x_i),
   \qquad
-  p^{\mathrm{text}}_{s,i}=\sigma(z_{s,i}),
+  p^{\mathrm{text}}_{s,i}=\sigma(z_{s,i}).
 \]
-where \(x_s\) is subject text, \(x_i\) is item text, and \(\phi\) represents text-derived features such as domain keywords, task type cues, difficulty indicators, subject family indicators, and semantic similarity features. Some variants used amortized difficulty scores from text models; others used simpler keyword and domain features.
-
-The text estimate was usually blended with a conservative prior:
+Feature maps \(\phi\) represented domain keywords, task-type cues, difficulty markers, subject-family indicators, and semantic similarity features. The text score was usually blended with a conservative prior:
 \[
   p_{s,i}=(1-\eta)p^{\mathrm{prior}}_{s,i}+\eta p^{\mathrm{text}}_{s,i}.
 \]
-This family was attractive because hidden item text is visible at inference time. The hosted scores, mostly around -0.65 to -0.67, showed that text-derived ranking signal was not enough. The failure mode was calibration: a text model might correctly rank two familiar public items but still assign the wrong absolute probability to a new hidden benchmark family.
+The failure mode was calibration. Text features sometimes ranked public rows well, but the absolute probability assigned to unseen hidden benchmark families was unstable.
 
-\subsection{Adaptive Labeling And Revealed-Label Adjustment}
-The competition can reveal a small number of hidden labels before prediction. The adaptive-labeling variants assigned each candidate pair an acquisition score \(r_{s,i}\). Two common policies were uncertainty sampling,
+\subsection{Adaptive Labeling Attempts}
+The competition permits a small number of labels to be revealed before full prediction. Acquisition policies assigned a score \(r_{s,i}\), such as uncertainty sampling
 \[
-  r_{s,i} = -\left|p_{s,i}-0.5\right|,
+  r_{s,i}=-|p_{s,i}-0.5|,
 \]
-and domain coverage sampling, which favored items from underrepresented predicted domains. After labels were revealed, the predictor estimated a small residual correction:
+or coverage sampling over predicted domains. After labels were revealed, simple adjustment models used
 \[
-  \Delta_L
-  =
-  \rho\left(\bar y_L-\bar p_L\right),
+  \Delta_L=\rho(\bar y_L-\bar p_L),
   \qquad
-  p^L_{s,i}=\operatorname{clip}(p_{s,i}+\Delta_L,\epsilon,1-\epsilon),
+  p^L_{s,i}=\operatorname{clip}(p_{s,i}+\Delta_L,\epsilon,1-\epsilon).
 \]
-where \(L\) is the revealed set, \(\bar y_L\) is the revealed label mean, \(\bar p_L\) is the model's mean prediction on those revealed rows, and \(\rho\) is a shrinkage factor. The hosted evidence did not support aggressive adaptive labeling. The final selected candidate omitted an active acquisition policy and relied on the platform's random revealed labels.
+Hosted results did not support aggressive acquisition. A key later lesson is that omitting \path{labeling.py} was beneficial for the final anchor because the platform-random labels preserved an unbiased base-rate estimate.
 
 \subsection{Item Memory And Exact Lookup}
-The item-memory family treated exact public item text as an identifier. For a normalized item text key \(k(i)\), the method estimated:
+Item-memory models treated normalized public item text as a key:
 \[
   \hat p_i
   =
-  \frac{n_i\bar y_i+\tau_i p^{\mathrm{fallback}}_{s,i}}{n_i+\tau_i},
+  \frac{n_i\bar y_i+\tau_i p^{\mathrm{fallback}}_{s,i}}{n_i+\tau_i}.
 \]
-where \(p^{\mathrm{fallback}}\) was a subject/domain prior used when the item was unseen. In row-holdout validation, this looked strong because many validation rows shared item text with training rows. The audit showed item coverage of 0.8128 in row holdout, but 0.0000 under benchmark-family holdout. Since the hidden competition items come from absent benchmarks, exact public item memory had little reason to transfer. Hosted item-memory variants stayed around -0.63 to -0.64.
+This looked strong under row holdout because public validation rows shared item text with training rows. Under benchmark-family holdout, item coverage was effectively zero, matching the hidden setup. Hosted item-memory variants stayed near -0.63 to -0.64, confirming that exact public item memory did not transfer.
 
 \subsection{AUC Stacks And Pairwise Rankers}
-The AUC-focused variants combined several component predictors to maximize ranking quality. A typical stack used a logit opinion pool:
+AUC-focused submissions combined component predictors with a logit opinion pool:
 \[
   p_{s,i}
   =
@@ -153,73 +149,113 @@ The AUC-focused variants combined several component predictors to maximize ranki
   \qquad
   w_m\ge 0.
 \]
-Here \(p^m\) are component predictions from priors, semantic models, memory models, tree models, or forecast models. The scale \(\gamma\) controls sharpness. Larger \(\gamma\) often improves ranking metrics on public slices because it separates examples more strongly, but it also increases log-loss risk when the hidden base rate shifts.
-
-Pairwise rankers used comparisons rather than direct probabilities. They estimated a latent score \(u_{s,i}\) such that
+The scale \(\gamma\) controlled sharpness. Higher sharpness often improved local ranking metrics but increased hidden log-loss risk. Pairwise rankers estimated latent utilities
 \[
   \Pr(y_a>y_b)=\sigma(u_a-u_b),
 \]
-then converted ranks back to probabilities. This was aligned with AUC but poorly aligned with negative log-loss. Hosted AUC/rank variants scored around -0.64 to -0.71, with the worst pairwise variant at -0.71.
+then converted ranks to probabilities. These models were aligned with AUC, not with calibrated log-loss. Hosted AUC/rank variants scored roughly -0.64 to -0.71.
 
 \subsection{Tree Models And Forecast Ensembles}
-Tree models used structured features from subjects, domains, text cues, public priors, and interaction indicators to predict correctness. Forecast ensembles then combined model outputs through a nonnegative logit pool:
+Tree models used structured subject, domain, text, public-prior, and interaction features. Forecast ensembles then pooled model outputs:
 \[
-  z_{s,i}
-  =
-  \alpha+\sum_m w_m\,\operatorname{logit}(p^m_{s,i}),
+  z_{s,i}=\alpha+\sum_m w_m\,\operatorname{logit}(p^m_{s,i}),
   \qquad
-  p_{s,i}=\sigma(z_{s,i}/T),
+  p_{s,i}=\sigma(z_{s,i}/T).
 \]
-where \(T\) is a temperature parameter. On public-proxy validation, these ensembles produced extremely strong local metrics, including log-loss near 0.34 and AUC above 0.928. Hosted results did not transfer, landing around -0.63 to -0.67. The interpretation is that the ensemble learned public benchmark and item structure too well, then became overconfident on shifted hidden benchmark families.
+On public-proxy validation, some forecast optimizers produced log-loss near 0.34 and AUC above 0.928. Hosted results did not transfer, landing around -0.63 to -0.67. The likely cause was overfitting public benchmark and item structure, followed by overconfident probabilities on shifted hidden families.
 
 \subsection{Compact Domain Priors}
-The best-transfer family used only broad subject and item-domain signals. Item text was mapped into coarse domain indicators \(D_k(i)\), such as coding, math, multimodal, instruction following, safety, or general QA. Each domain effect was shrunk:
+The most stable pre-anchor family used broad subject and item-domain signals. Item text was mapped into coarse indicators \(D_k(i)\), and each domain effect was shrunk:
 \[
-  \delta_k
-  =
-  \frac{n_k}{n_k+\tau_d}\left(\bar y_k-c\right),
+  \delta_k=\frac{n_k}{n_k+\tau_d}(\bar y_k-c),
   \qquad
   d(i)=\sum_k D_k(i)\delta_k.
 \]
-The subject term was also shrunk:
+Subject ability was similarly shrunk:
 \[
-  a_s=\frac{n_s}{n_s+\tau_s}\left(\bar y_s-c\right).
+  a_s=\frac{n_s}{n_s+\tau_s}(\bar y_s-c).
 \]
-The compact prediction was:
+The compact prediction was
 \[
-  p_{s,i}
-  =
-  \operatorname{clip}\left(c+w_a a_s+w_d d(i),\epsilon,1-\epsilon\right).
+  p_{s,i}=\operatorname{clip}\left(c+w_a a_s+w_d d(i),\epsilon,1-\epsilon\right).
 \]
-This model avoided exact public item lookup, public benchmark lookup, and high-variance interactions. It was less expressive than the stacks, but it transferred better because it made fewer claims about the unseen benchmark identities. Multiple compact domain-prior variants tied at the best rounded hosted score of -0.62.
+This family avoided exact item lookup, public benchmark lookup, and high-variance interactions. Multiple compact domain-prior variants reached the early -0.62 plateau, and the final anchor retained this compact formula as the no-label fallback.
 
-\subsection{Hierarchical OOD Model}
-The hierarchical OOD family extended the compact prior with subject-domain interactions and stronger out-of-domain shrinkage:
+\subsection{Hierarchical OOD Extensions}
+Hierarchical OOD variants added subject-domain interactions and conservative revealed-label corrections:
 \[
   p_{s,i}
   =
-  \operatorname{clip}\left(
-    c+a_s+d(i)+h_{s,d(i)}+\ell_L,
-    \epsilon,1-\epsilon
-  \right).
+  \operatorname{clip}\left(c+a_s+d(i)+h_{s,d(i)}+\ell_L,\epsilon,1-\epsilon\right),
 \]
-The interaction term \(h_{s,d}\) measured whether a subject was unusually strong or weak in a domain after accounting for the subject and domain main effects:
+with
 \[
   h_{s,d}
   =
   \frac{n_{s,d}}{n_{s,d}+\tau_h}
   \left(\bar y_{s,d}-c-a_s-d\right).
 \]
-The term \(\ell_L\) represented a conservative revealed-label correction when labels were available. Local cold benchmark-family validation suggested this was a better OOD model than the compact prior. Hosted results did not confirm that improvement: hierarchical OOD submissions ranged from -0.63 to -0.68. The likely reason is that even benchmark-holdout validation did not perfectly match the hosted hidden sample, and the added interaction terms introduced enough variance to hurt log-loss.
+Cold benchmark-family validation suggested improvement, but hosted results ranged from -0.63 to -0.68. The additional interactions likely added enough variance to hurt log-loss on the hidden sample.
 
-\subsection{Final Formula Micro-Sweeps}
-After the hierarchical and high-AUC tracks degraded, the final search returned to the compact formula and changed only calibration-center and strength parameters:
+\subsection{Final Domain Micro-Sweeps}
+After high-complexity methods degraded, calibration-center sweeps tested whether the hidden base rate was simply lower or higher than 0.60:
 \[
-  p_{s,i}(c,s)
+  p_{s,i}(c,\lambda)
   =
-  \operatorname{clip}\left(c+s(w_a a_s+w_d d(i)),\epsilon,1-\epsilon\right).
+  \operatorname{clip}\left(c+\lambda(w_a a_s+w_d d(i)),\epsilon,1-\epsilon\right).
 \]
-The sweep tested centers above and below the selected center, including 0.610 and 0.630 above, then 0.590, 0.580, 0.570, 0.560, and 0.550 below. None beat the rounded -0.62 plateau. The lower-center attempts were especially useful because they tested whether hidden labels had a lower base rate than the public evidence suggested. They did not improve hosted log-loss, so the final selection remained the 0.600-centered compact domain prior.
+Centers from 0.550 to 0.630 and several cooling strengths were submitted. None beat the compact -0.62 plateau. That result made a single global-center correction unlikely to be sufficient.
+
+\subsection{Revealed-Label Anchoring}
+The final successful family used random revealed labels as a hidden-run base-rate estimator. For a target row \(i\), the model constructed a hierarchy of grouping keys:
+\[
+  \mathcal{G}(i)=
+  [
+    \mathrm{pooled},
+    \mathrm{family}(i),
+    \mathrm{signature}(i),
+    \mathrm{benchmark}(i),
+    (\mathrm{benchmark}(i),\mathrm{condition}(i))
+  ].
+\]
+The family and signature levels are coarse groupings derived from visible metadata and text. The benchmark and condition levels are populated only from labels revealed during the hosted run.
+
+For each group \(g\), revealed labels define a Laplace-smoothed rate in logit space:
+\[
+  m_g=\frac{s_g+\alpha}{n_g+2\alpha},
+  \qquad
+  \ell_g=\operatorname{logit}(m_g).
+\]
+Child logits are shrunk toward parent logits:
+\[
+  \tilde\ell_g
+  =
+  w_g\ell_g+(1-w_g)\tilde\ell_{\mathrm{parent}(g)},
+  \qquad
+  w_g=\frac{n_g}{n_g+\tau},
+\]
+with \(\alpha=1\) and \(\tau=4\) in the selected variant. This makes the prediction close to the hidden category's observed base rate while limiting overconfidence from small samples.
+
+The model then adds a family-aware subject correction. Public data estimate
+\[
+  o_{s,f}
+  =
+  \operatorname{clip}\left(
+    \operatorname{logit}(\hat p_{s,f})
+    -
+    \operatorname{logit}(\hat p_f),
+    -c_o,c_o
+  \right).
+\]
+The selected debiased variant subtracts the mean subject offset in the revealed sample and adds the target subject's offset:
+\[
+  z_{s,i}
+  =
+  \tilde\ell_{g^*(i)}-\beta\bar o_L+\beta o_{s,f(i)},
+  \qquad
+  p_{s,i}=\sigma(z_{s,i}),
+\]
+where \(\beta=0.60\). Offline simulation of the exact runtime with random revealed labels selected the family-aware debiased configuration, and hosted evaluation confirmed it: \path{submission_anchor_fam_b60_debias.zip} scored -0.57. Nearby anchor variants also showed the risk of over-adjustment, ranging from -0.60 to -0.82.
 
 \section{Hosted Results}
 \input{tables/selected_result.tex}
@@ -228,7 +264,7 @@ The sweep tested centers above and below the selected center, including 0.610 an
 
 \input{tables/best_rows.tex}
 
-Figure~\ref{fig:hosted-time} plots all finished hosted scores by submission order. Figure~\ref{fig:best-family} summarizes the best score by method family. Figure~\ref{fig:narrative} shows the cumulative-best search narrative: compact/domain-prior submissions found the -0.62 plateau early, while later high-complexity tracks mostly failed to raise the hosted best.
+Figure~\ref{fig:hosted-time} plots finished hosted scores by submission order. Figure~\ref{fig:best-family} summarizes the best score by method family. Figure~\ref{fig:narrative} shows the search narrative: compact domain-prior candidates established the -0.62 plateau, higher-complexity candidates mostly failed to improve it, and revealed-label anchoring produced the -0.57 best row.
 
 \begin{figure}[H]
   \centering
@@ -247,43 +283,45 @@ Figure~\ref{fig:hosted-time} plots all finished hosted scores by submission orde
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/search_narrative.png}
-  \caption{Cumulative best score for compact/domain-prior candidates versus higher-complexity candidates.}
+  \caption{Cumulative best score for compact/domain-prior candidates, higher-complexity candidates, and revealed-label anchor candidates.}
   \label{fig:narrative}
 \end{figure}
 
 \section{Why High Local AUC Did Not Transfer}
-The failed transfer had three interacting causes. Taken together, the hosted evidence shows that public-slice AUC was not reliable promotion evidence for this competition.
+The hosted evidence shows that public-slice AUC was not reliable promotion evidence for this competition.
 
-\paragraph{First, validation overlap was too permissive.}
-Public-slice probes sampled from the same public matrix used to build many artifacts. This preserved subject, benchmark, condition, and sometimes item overlap. Exact item-memory looked excellent under row holdout because most validation items were still seen, but it had zero item coverage under benchmark holdout.
+\paragraph{Validation overlap was too permissive.}
+Public-slice probes sampled from the same public matrix used to build many artifacts, preserving subject, benchmark, condition, and sometimes item overlap. Exact item memory had high row-holdout coverage but zero benchmark-holdout item coverage.
 
-\paragraph{Second, AUC rewarded ranking but not hidden calibration.}
-AUC-heavy submissions used wide probability spreads. That can improve rank ordering on familiar rows while increasing log-loss when the hidden base rate shifts. The strict benchmark-holdout audit already showed this pattern: weighted log-loss 0.729388 and weighted AUC 0.537691, with several held-out benchmark families showing large prediction-mean errors.
+\paragraph{AUC rewarded ranking rather than calibration.}
+AUC-heavy models used wide probability spreads. That can rank familiar rows well while worsening log-loss on shifted hidden families. The strict benchmark-holdout audit already showed weak transfer, with weighted log-loss 0.729388 and weighted AUC 0.537691.
 
-\paragraph{Third, hidden benchmark families changed the base-rate problem.}
-The hidden benchmark identities were absent from public training. A model could learn that a public benchmark or item cluster was easy or hard, but that signal did not directly identify the hidden benchmark family. The compact domain prior was less ambitious, but its shrinkage made it more robust to the unknown hidden base rate.
+\paragraph{Hidden benchmark families changed the base-rate problem.}
+Models could learn that a public benchmark was easy or hard, but that did not identify the hidden benchmark family's base rate. The compact domain prior was robust because it stayed broad; the anchor improved further because it estimated the hidden-run base rate directly from revealed labels.
 
 \section{Final Selected Method}
-The selected method is \texttt{submission\_domain\_live\_mid600.zip}. Its formula can be summarized as:
+The selected method is \texttt{submission\_anchor\_fam\_b60\_debias.zip}. Its runtime formula is:
 \[
-  p = \operatorname{clip}\left(c + w_s \cdot a(\text{subject}) + w_d \cdot d(\text{item}), \epsilon, 1-\epsilon\right),
+  p_{s,i}
+  =
+  \sigma\left(
+    \tilde\ell_{g^*(i)}-\beta\bar o_L+\beta o_{s,f(i)}
+  \right).
 \]
-where \(c\) is a global center near 0.600, \(a(\text{subject})\) is a shrunk subject alias prior, and \(d(\text{item})\) is a coarse domain-prior adjustment derived from item text. The submitted method carries only the small domain-prior table needed for this formula and does not use an active acquisition policy.
+The term \(\tilde\ell_{g^*(i)}\) is the shrunk hidden-run base-rate logit from random revealed labels, \(o_{s,f(i)}\) is a family-relative subject offset, and \(\bar o_L\) debiases the revealed sample for subject composition. The ZIP contains only \path{model.py} and \path{artifacts/domain_prior.json}. It has no \path{labeling.py}, no exact item-memory table, no tree model, and no forecast ensemble.
 
-This method did not achieve the competition target of log-loss below 0.60. It was selected because it was the best hosted-risk tradeoff: it tied the best rounded hosted score, had competition-reported AUC-ROC 0.72, and remained stable across neighboring variants while more complex local winners degraded.
+This method achieved the competition target of log-loss below 0.60. It replaced \path{submission_domain_live_mid600.zip} as the final selection because the updated hosted evidence gave it score -0.57 and competition-reported AUC-ROC 0.73.
 
 \section{Lessons Learned And Future Work}
-The primary lesson is that hosted negative log-loss must be treated as the objective, not public-proxy AUC. Future work should use benchmark-family holdout as the default promotion gate and should reject candidates that improve ranking by increasing probability spread unless they also improve cold calibration.
+Hosted negative log-loss must remain the objective. Public-proxy AUC can diagnose ranking signal, but it should not promote a submission unless cold benchmark-family log-loss and calibration also improve.
 
-The most promising future direction is not another exact-memory or tree-stack attempt. It is a better hidden base-rate estimator: richer but strongly shrunk item-domain signatures, subject-domain interactions validated only under leave-benchmark-family-out folds, and calibration centers selected for worst-fold robustness rather than public average performance. Adaptive labeling should remain disabled unless a policy consistently beats platform-random labels under benchmark-holdout simulation and does not worsen the worst fold.
+The most useful future work is better hidden-run base-rate estimation. That means more robust grouping keys for revealed labels, better small-\(K\) variance control, and subject-family offsets trained without benchmark-family leakage. Active labeling should remain disabled unless it beats platform-random labels while preserving an unbiased category base-rate estimate.
 
 \section{Clean Publication Repository}
-The clean publication artifact is organized as \path{aims-competition} and published at \url{https://github.com/BlakeMasters/aims-competition}. It contains the final uploadable ZIP, an extracted copy of the final submission source for inspection, archived alternate submission ZIPs under \path{unused_submissions}, this technical report as both PDF and LaTeX source, generated report figures and tables, hosted-results files, minimal starter-kit validation tools, and the tiny sample files required for local smoke testing. It intentionally excludes validation extraction folders, Python caches, raw downloaded benchmark data, virtual environments, agent instructions, documentation folders, and iterative working artifacts.
-
-This separation matters because the final competition evidence should be easy to inspect without requiring an evaluator to navigate the full experimental workspace. The clean repository is therefore the publication unit, while the larger working directory remains an audit trail of the search process.
+The clean publication artifact is organized as \path{aims-competition} and published at \url{https://github.com/BlakeMasters/aims-competition}. It contains the final uploadable ZIP, extracted final submission source, archived alternate submission ZIPs under \path{unused_submissions}, this report as PDF and LaTeX source, generated figures and tables, hosted-results files, minimal validation tools, and tiny sample files for smoke testing. It intentionally excludes raw benchmark downloads, validation extraction folders, virtual environments, Python caches, agent instructions, documentation folders, and iterative working artifacts.
 
 \section{Reproducibility}
-The hosted-results tables and figures were regenerated from \texttt{eval\_finals.txt} and local analysis notes. The parser found 82 hosted rows and 80 finished scored rows. The best rounded hosted score was -0.62, tied by 9 finished rows in the cleaned hosted result table. The derived CSV files under \texttt{report/tables/} provide the exact counts used in Table~\ref{tab:family-summary}.
+The hosted-results tables and figures were regenerated from \texttt{eval\_finals.txt}. The parser found 94 hosted rows and 92 finished scored rows. The best rounded hosted score was -0.57, tied by 1 finished rows in the cleaned hosted result table. The derived CSV files under \texttt{report/tables/} provide the exact counts used in Table~\ref{tab:family-summary}.
 
 \bibliographystyle{plain}
 \bibliography{references}
