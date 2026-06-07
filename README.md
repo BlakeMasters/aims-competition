@@ -12,6 +12,18 @@ Clean publication repository for the Codabench Predictive Evaluation Competition
 
 The final method uses the platform's random revealed labels to estimate a hidden-run base rate, then applies a moderate family-aware subject correction. It falls back to the compact domain prior when useful labels are unavailable. It does not use exact public item memory, tree/forecast ensembles, or an active adaptive-labeling policy.
 
+## Top Hosted Submissions
+
+Ranks use competition-style ties. The three `-0.60` rows are tied for rank 3, giving five top hosted rows total.
+
+| Rank | Submission | Hosted negative log-loss | Approximate log-loss | Method family |
+| ---: | --- | ---: | ---: | --- |
+| 1 | `submission_anchor_fam_b60_debias.zip` | `-0.57` | `0.57` | Label-anchored, family-aware, debiased |
+| 2 | `submission_anchor_g60.zip` | `-0.59` | `0.59` | Label-anchored, global subject offset |
+| T-3 | `submission_anchor_g60_debias.zip` | `-0.60` | `0.60` | Label-anchored, global subject offset, debiased |
+| T-3 | `submission_anchor_fam_b50_debias.zip` | `-0.60` | `0.60` | Label-anchored, family-aware, lower subject weight |
+| T-3 | `submission_anchor_fam_b60.zip` | `-0.60` | `0.60` | Label-anchored, family-aware |
+
 ## Repository Contents
 
 - `submission/`
