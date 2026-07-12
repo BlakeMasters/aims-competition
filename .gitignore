@@ -42,5 +42,9 @@ analysis/
 experiments/
 scratch/
 
+# Private case-study authoring and disclosure controls
+/blog-source/
+/.publication-blocklist
+
 # Keep the final upload ZIP tracked; do not add exploratory root-level ZIPs.
 /submission_*.zip
