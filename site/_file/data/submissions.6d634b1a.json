@@ -1,0 +1,2522 @@
+[
+  {
+    "sequence": 1,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.69,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.69
+  },
+  {
+    "sequence": 2,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.69,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.69
+  },
+  {
+    "sequence": 3,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.65
+  },
+  {
+    "sequence": 4,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 5,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 6,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 7,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 8,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.66,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 9,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.66,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 10,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Other",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 11,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.67,
+    "family": "Semantic / text",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 12,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Semantic / text",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.64
+  },
+  {
+    "sequence": 13,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 14,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 15,
+    "date": "2026-05-22",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Semantic / text",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 16,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Hierarchical / OOD",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 17,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.67,
+    "family": "Hierarchical / OOD",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 18,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.69,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 19,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Ranking stack",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 20,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.68,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 21,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 22,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 23,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 24,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.63
+  },
+  {
+    "sequence": 25,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 26,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Item memory",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 27,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Item memory",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 28,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 29,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 30,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 31,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 32,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 33,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 34,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 35,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Ranking stack",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 36,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Ranking stack",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 37,
+    "date": "2026-06-02",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Baseline search",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 38,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 39,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 40,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 41,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 42,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 43,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 44,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 45,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 46,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 47,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 48,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 49,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 50,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 51,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 52,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 53,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 54,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 55,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 56,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 57,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 58,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 59,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Tree blend",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 60,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Tree blend",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 61,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Tree blend",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 62,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.71,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 63,
+    "date": "2026-06-03",
+    "status": "Failed",
+    "score": -0.66,
+    "family": "Ranking stack",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 64,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.67,
+    "family": "Forecast ensemble",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 65,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Forecast ensemble",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 66,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Forecast ensemble",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 67,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Forecast ensemble",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 68,
+    "date": "2026-06-03",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Forecast ensemble",
+    "stage": "Model expansion",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 69,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Hierarchical / OOD",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 70,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Hierarchical / OOD",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 71,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.66,
+    "family": "Hierarchical / OOD",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 72,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.66,
+    "family": "Hierarchical / OOD",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 73,
+    "date": "2026-06-05",
+    "status": "Preparing",
+    "score": -0.68,
+    "family": "Hierarchical / OOD",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 74,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.67,
+    "family": "Hierarchical / OOD",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 75,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 76,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 77,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 78,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 79,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.68,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 80,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 81,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 82,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 83,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 84,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 85,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 86,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 87,
+    "date": "2026-06-05",
+    "status": "Finished",
+    "score": -0.66,
+    "family": "Calibrated prior",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.62
+  },
+  {
+    "sequence": 88,
+    "date": "2026-06-06",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 89,
+    "date": "2026-06-06",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 90,
+    "date": "2026-06-06",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 91,
+    "date": "2026-06-06",
+    "status": "Finished",
+    "score": -0.82,
+    "family": "Label anchored",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 92,
+    "date": "2026-06-06",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Label anchored",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 93,
+    "date": "2026-06-06",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 94,
+    "date": "2026-06-06",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Calibration pass",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 95,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 96,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 97,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 98,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 99,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 100,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 101,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 102,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 103,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 104,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 105,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 106,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 107,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 108,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 109,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 110,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 111,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.72,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 112,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 113,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 114,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.73,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 115,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 116,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 117,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.57
+  },
+  {
+    "sequence": 118,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.56,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 119,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 120,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 121,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 122,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 123,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 124,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.56,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 125,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 126,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 127,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.73,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 128,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 129,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 130,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 131,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 132,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 133,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 134,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 135,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 136,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 137,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 138,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 139,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.68,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 140,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 141,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 142,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 143,
+    "date": "2026-06-12",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 144,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 145,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 146,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 147,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 148,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 149,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.68,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 150,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.67,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 151,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 152,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 153,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 154,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 155,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 156,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 157,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 158,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 159,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 160,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.56,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 161,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 162,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 163,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.56,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 164,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 165,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 166,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 167,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.61,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 168,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 169,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 170,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 171,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 172,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 173,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 174,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.72,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 175,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 176,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 177,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 178,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 179,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 180,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 181,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 182,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 183,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 184,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 185,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.66,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 186,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 187,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 188,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 189,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 190,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 191,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 192,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 193,
+    "date": "2026-06-14",
+    "status": "Finished",
+    "score": -0.61,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 194,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 195,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 196,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 197,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 198,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 199,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.61,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 200,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 201,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 202,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 203,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 204,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 205,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.66,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 206,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 207,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 208,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 209,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 210,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 211,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 212,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.76,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 213,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 214,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 215,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 216,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 217,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 218,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 219,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 220,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.56,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 221,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 222,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.61,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 223,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.56,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 224,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 225,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 226,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 227,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 228,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 229,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.62,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 230,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 231,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.61,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 232,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.61,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 233,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 234,
+    "date": "2026-06-15",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 235,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 236,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 237,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.65,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 238,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 239,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.73,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 240,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 241,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 242,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 243,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 244,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 245,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 246,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 247,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 248,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 249,
+    "date": "2026-06-21",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Label anchored",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 250,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 251,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.61,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 252,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.56,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 253,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 254,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 255,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.74,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 256,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 257,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 258,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 259,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 260,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 261,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 262,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 263,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 264,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 265,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 266,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 267,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 268,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 269,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 270,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.63,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 271,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.64,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 272,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 273,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.59,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 274,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 275,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 276,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.57,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 277,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.83,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 278,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 279,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.6,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  },
+  {
+    "sequence": 280,
+    "date": "2026-06-22",
+    "status": "Finished",
+    "score": -0.58,
+    "family": "Other",
+    "stage": "Final search",
+    "cumulativeBest": -0.56
+  }
+]

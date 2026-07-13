@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">Declassified Technical Case Study</title>
+  <desc id="desc">A declassified case file with typed metadata, competition metrics, a coffee ring, and a hosted-score trace.</desc>
+  <rect width="1400" height="560" fill="#292722"/>
+  <path d="M56 34H1344V510L1322 519 1296 508 1270 520 1244 509 1218 518 1192 507 1166 520 1140 509 1114 518 1088 508 1062 520 1036 509 1010 518 984 507 958 520 932 509 906 518 880 508 854 520 828 509 802 518 776 507 750 520 724 509 698 518 672 508 646 520 620 509 594 518 568 507 542 520 516 509 490 518 464 508 438 520 412 509 386 518 360 507 334 520 308 509 282 518 256 508 230 520 204 509 178 518 152 507 126 520 100 509 76 518 56 510Z" fill="#d9ceb9"/>
+  <path d="M94 20H390L430 72H94Z" fill="#b68b43"/>
+  <text x="122" y="53" fill="#201f1b" font-family="Courier New, monospace" font-size="16" font-weight="700" letter-spacing="3">CASE FILE 15934</text>
+  <path d="M94 103H1306M94 143H1306M360 178V382M94 410H1306M94 484H1306" fill="none" stroke="#201f1b" stroke-opacity=".74"/>
+  <text x="94" y="128" fill="#201f1b" font-family="Courier New, monospace" font-size="13" font-weight="700" letter-spacing="2">DECLASSIFIED / PUBLIC COPY / FILED 2026-07-10</text>
+  <g fill="#5d574d" font-family="Courier New, monospace" font-size="12" font-weight="700" letter-spacing="1.5">
+    <text x="94" y="205">SUBJECT</text><text x="94" y="227" fill="#201f1b" letter-spacing="0">HIDDEN EVALUATION</text>
+    <text x="94" y="267">METRIC</text><text x="94" y="289" fill="#201f1b" letter-spacing="0">NEGATIVE LOG-LOSS</text>
+    <text x="94" y="329">DISPOSITION</text><text x="94" y="351" fill="#201f1b" letter-spacing="0">FIRST PLACE</text>
+  </g>
+  <g fill="#201f1b" font-family="Georgia, Times New Roman, serif" font-weight="700"><text x="410" y="231" font-size="52">Declassified Technical</text><text x="410" y="294" font-size="52">Case Study</text></g>
+  <rect x="412" y="326" width="220" height="35" fill="#141310"/>
+  <text x="429" y="350" fill="#d9ceb9" font-family="Courier New, monospace" font-size="17" font-weight="700" letter-spacing="2">[REDACTED]</text>
+  <text x="650" y="350" fill="#4f493f" font-family="Georgia, Times New Roman, serif" font-size="21">kept the late-stage research on the record.</text>
+  <g transform="translate(958 194) rotate(-9)" fill="none" stroke="#704528" opacity=".18"><circle cx="86" cy="86" r="70" stroke-width="7"/><circle cx="86" cy="86" r="61" stroke-width="2"/><path d="M143 129c22 2 34 7 43 17" stroke-width="4" stroke-linecap="round"/></g>
+  <g font-family="Courier New, monospace"><text x="94" y="438" fill="#5d574d" font-size="11" font-weight="700" letter-spacing="1.4">NEG LOG-LOSS</text><text x="94" y="469" fill="#201f1b" font-size="27" font-weight="700">-0.56</text><text x="312" y="438" fill="#5d574d" font-size="11" font-weight="700" letter-spacing="1.4">AUC-ROC</text><text x="312" y="469" fill="#201f1b" font-size="27" font-weight="700">0.74</text><text x="500" y="438" fill="#5d574d" font-size="11" font-weight="700" letter-spacing="1.4">FINAL PLACEMENT</text><text x="500" y="469" fill="#201f1b" font-size="22" font-weight="700">#1</text></g>
+  <g transform="translate(830 420)"><path d="M0 45L42 36 84 41 126 21 168 34 210 26 252 32 294 15 336 18 378 4" fill="none" stroke="#b95645" stroke-width="4"/><path d="M0 45L42 36 84 36 126 21 168 21 210 21 252 21 294 15 336 15 378 4" fill="none" stroke="#201f1b" stroke-width="2" stroke-dasharray="7 6"/><path d="M0 55H392" stroke="#5f7e97" stroke-opacity=".5"/><text x="0" y="76" fill="#5d574d" font-family="Courier New, monospace" font-size="11" letter-spacing="1.2">HOSTED SCORE ENVELOPE / 278 FINISHED</text></g>
+</svg>

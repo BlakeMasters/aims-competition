@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Declassified Technical Case Study</title>
+<link rel="preload" as="style" href="./_import/style.8b750158.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="./_import/style.8b750158.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="./_observablehq/client.7e7e39e1.js">
+<link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.23790ac1.js">
+<link rel="modulepreload" href="./_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.f7175400.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/604cb63b.js">
+
+    <meta name="description" content="An interactive technical case study from the AIMS Predictive Evaluation Competition.">
+    <meta name="author" content="Blake">
+    <meta property="og:title" content="Declassified Technical Case Study">
+    <meta property="og:description" content="First-place submission methodology for the AIMS Predictive Evaluation Competition.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://blakemasters.github.io/aims-competition/">
+    <meta property="og:image" content="https://blakemasters.github.io/aims-competition/assets/social-card.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://blakemasters.github.io/aims-competition/">
+    <meta name="theme-color" content="#f3ead8">
+
+<script type="module">
+
+import {define} from "./_observablehq/client.7e7e39e1.js";
+import {registerFile} from "./_observablehq/stdlib.23790ac1.js";
+
+registerFile("./data/leaderboard.json", {"name":"./data/leaderboard.json","mimeType":"application/json","path":"./_file/data/leaderboard.ba493148.json","lastModified":1783898459327,"size":304});
+registerFile("./data/submissions.json", {"name":"./data/submissions.json","mimeType":"application/json","path":"./_file/data/submissions.6d634b1a.json","lastModified":1783898459327,"size":53238});
+registerFile("./data/system-summary.json", {"name":"./data/system-summary.json","mimeType":"application/json","path":"./_file/data/system-summary.4e26f3eb.json","lastModified":1783898459327,"size":116});
+
+define({id: "fa182191", inputs: ["FileAttachment","html","globalThis","IntersectionObserver"], outputs: ["submissions","leaderboard","systemSummary","finished","stageNames","familySummary","familyNames","palette","sorted","quantile","deviation","overallScores","overallStats","accessiblePlot","plotModulePromise","lazyPlot"], body: async (FileAttachment,html,globalThis,IntersectionObserver) => {
+const submissions = await FileAttachment("./data/submissions.json").json();
+const leaderboard = await FileAttachment("./data/leaderboard.json").json();
+const systemSummary = await FileAttachment("./data/system-summary.json").json();
+const finished = submissions.filter((row) => row.status === "Finished");
+const stageNames = [...new Set(finished.map((row) => row.stage))];
+const familySummary = [...new Set(finished.map((row) => row.family))]
+  .map((family) => {
+    const rows = finished.filter((row) => row.family === family);
+    return {
+      family,
+      count: rows.length,
+      best: Math.max(...rows.map((row) => row.score)),
+      worst: Math.min(...rows.map((row) => row.score))
+    };
+  })
+  .sort((a, b) => b.best - a.best || a.family.localeCompare(b.family));
+const familyNames = familySummary.map((row) => row.family);
+const palette = ["#c65f4c", "#738c72", "#6b879f", "#b68b43", "#8d7292", "#527b78", "#a86858", "#72746f", "#9d783c", "#4e6d82"];
+const sorted = (values) => [...values].sort((a, b) => a - b);
+const quantile = (values, probability) => {
+  const ordered = sorted(values);
+  const index = (ordered.length - 1) * probability;
+  const lower = Math.floor(index);
+  const upper = Math.ceil(index);
+  return ordered[lower] + (ordered[upper] - ordered[lower]) * (index - lower);
+};
+const deviation = (values) => {
+  const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  return Math.sqrt(values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length);
+};
+const overallScores = finished.map((row) => row.score);
+const overallStats = {
+  best: Math.max(...overallScores),
+  worst: Math.min(...overallScores),
+  deviation: deviation(overallScores),
+  firstBest: finished.find((row) => row.score === Math.max(...overallScores))
+};
+function accessiblePlot(plot, label) {
+  plot.setAttribute("role", "img");
+  plot.setAttribute("aria-label", label);
+  plot.querySelectorAll("g[aria-label]").forEach((group) => group.removeAttribute("aria-label"));
+  return plot;
+}
+let plotModulePromise;
+function lazyPlot(build, label, height) {
+  const host = html`<div class="lazy-plot" role="img" aria-label=${label} aria-busy="true" style=${`min-height:${height}px`}></div>`;
+  const render = async () => {
+    plotModulePromise ??= import("./_npm/@observablehq/plot@0.6.17/93ce672e.js");
+    const Plot = await plotModulePromise;
+    host.replaceChildren(accessiblePlot(build(Plot), label));
+    host.removeAttribute("role");
+    host.removeAttribute("aria-label");
+    host.setAttribute("aria-busy", "false");
+  };
+  if (globalThis.IntersectionObserver) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        observer.disconnect();
+        requestAnimationFrame(render);
+      }
+    }, {rootMargin: "320px 0px"});
+    observer.observe(host);
+  } else {
+    render();
+  }
+  return host;
+}
+return {submissions,leaderboard,systemSummary,finished,stageNames,familySummary,familyNames,palette,sorted,quantile,deviation,overallScores,overallStats,accessiblePlot,plotModulePromise,lazyPlot};
+}});
+
+define({id: "f3be066d", inputs: ["view","Inputs","stageNames"], outputs: ["evidenceSlice","windowControl","rollingWindow"], body: (view,Inputs,stageNames) => {
+const evidenceSlice = view(Inputs.select(["All stages", ...stageNames], {
+  label: "Evidence slice",
+  value: "All stages"
+}));
+const windowControl = Inputs.range([8, 40], {
+  label: "Rolling evidence window",
+  value: 18,
+  step: 2
+});
+windowControl.querySelector('input[type="range"]').setAttribute("aria-label", "Rolling evidence window");
+const rollingWindow = view(windowControl);
+return {evidenceSlice,windowControl,rollingWindow};
+}});
+
+define({id: "32ca5310", inputs: ["evidenceSlice","finished","rollingWindow","quantile","deviation"], outputs: ["evidenceRows","rollingRows","evidenceScores","evidenceStats"], body: (evidenceSlice,finished,rollingWindow,quantile,deviation) => {
+const evidenceRows = evidenceSlice === "All stages" ? finished : finished.filter((row) => row.stage === evidenceSlice);
+const rollingRows = evidenceRows.map((row, index) => {
+  const values = evidenceRows.slice(Math.max(0, index - rollingWindow + 1), index + 1).map((candidate) => candidate.score);
+  return {
+    ...row,
+    lower: quantile(values, 0.10),
+    upper: quantile(values, 0.90),
+    median: quantile(values, 0.50),
+    volatility: deviation(values)
+  };
+});
+const evidenceScores = evidenceRows.map((row) => row.score);
+const evidenceStats = {
+  count: evidenceRows.length,
+  best: Math.max(...evidenceScores),
+  worst: Math.min(...evidenceScores),
+  volatility: deviation(evidenceScores)
+};
+return {evidenceRows,rollingRows,evidenceScores,evidenceStats};
+}});
+
+define({id: "0aee8586", inputs: ["display","html","evidenceStats","rollingWindow"], body: (display,html,evidenceStats,rollingWindow) => {
+display(html`<dl class="proof-strip" aria-label="Selected submission evidence statistics">
+  <div><dt>FINISHED</dt><dd>${evidenceStats.count}</dd></div>
+  <div><dt>SCORE RANGE</dt><dd>${evidenceStats.worst.toFixed(2)} to ${evidenceStats.best.toFixed(2)}</dd></div>
+  <div><dt>σ / VOLATILITY</dt><dd>${evidenceStats.volatility.toFixed(3)}</dd></div>
+  <div><dt>WINDOW</dt><dd>${rollingWindow} results</dd></div>
+</dl>`);
+}});
+
+define({id: "30b775a3", inputs: ["display","lazyPlot","width","rollingRows","evidenceRows","evidenceStats"], body: (display,lazyPlot,width,rollingRows,evidenceRows,evidenceStats) => {
+display(lazyPlot((Plot) => Plot.plot({
+  width,
+  height: 480,
+  marginLeft: 64,
+  marginRight: 24,
+  marginBottom: 52,
+  style: {background: "transparent", fontSize: "12px"},
+  x: {label: "Finished local evaluation sequence", grid: false},
+  y: {label: "Hosted negative log-loss", domain: [-0.85, -0.54], grid: true},
+  marks: [
+    Plot.areaY(rollingRows, {x: "sequence", y1: "lower", y2: "upper", fill: "#6b879f", fillOpacity: 0.22}),
+    Plot.dot(evidenceRows, {x: "sequence", y: "score", r: 2.4, fill: "#655f55", opacity: 0.42, tip: true, title: (row) => `${row.stage}\n${row.family}\n${row.date}\nscore ${row.score.toFixed(2)}`}),
+    Plot.lineY(rollingRows, {x: "sequence", y: "median", stroke: "#c65f4c", strokeWidth: 2.3}),
+    Plot.lineY(evidenceRows, {x: "sequence", y: "cumulativeBest", stroke: "#26231f", strokeWidth: 2.2, curve: "step-after"}),
+    Plot.ruleY([-0.62], {stroke: "#738c72", strokeDasharray: "4,5", strokeOpacity: 0.85}),
+    Plot.ruleY([-0.56], {stroke: "#26231f", strokeDasharray: "7,5", strokeOpacity: 0.7}),
+    Plot.text([{sequence: evidenceRows.at(-1).sequence, score: -0.56, label: "−0.56"}], {x: "sequence", y: "score", text: "label", dy: -10, textAnchor: "end", fontWeight: 700})
+  ]
+}), `Hosted score envelope and cumulative-best frontier for ${evidenceStats.count} finished local evaluations.`, 480));
+}});
+
+define({id: "2cdbb16b", mode: "inline", inputs: ["overallStats","display"], body: async (overallStats,display) => {
+display(await(
+overallStats.firstBest.sequence
+))
+}});
+
+define({id: "381d5bdf", inputs: ["view","Inputs","familyNames"], outputs: ["familyFocus"], body: (view,Inputs,familyNames) => {
+const familyFocus = view(Inputs.select(familyNames, {
+  label: "Trace family",
+  value: "Label anchored"
+}));
+return {familyFocus};
+}});
+
+define({id: "4c37b713", inputs: ["familySummary","familyFocus"], outputs: ["familyFocusRow"], body: (familySummary,familyFocus) => {
+const familyFocusRow = familySummary.find((row) => row.family === familyFocus) ?? familySummary[0];
+return {familyFocusRow};
+}});
+
+define({id: "75c69991", inputs: ["display","html","familyFocus","familyFocusRow"], body: (display,html,familyFocus,familyFocusRow) => {
+display(html`<dl class="proof-strip compact" aria-label="Selected method family statistics">
+  <div><dt>FAMILY</dt><dd>${familyFocus}</dd></div>
+  <div><dt>LOGGED RESULTS</dt><dd>${familyFocusRow.count}</dd></div>
+  <div><dt>RANGE</dt><dd>${familyFocusRow.worst.toFixed(2)} to ${familyFocusRow.best.toFixed(2)}</dd></div>
+</dl>`);
+}});
+
+define({id: "ffef9e39", inputs: ["display","lazyPlot","width","familySummary","familyNames","familyFocus"], body: (display,lazyPlot,width,familySummary,familyNames,familyFocus) => {
+display(lazyPlot((Plot) => Plot.plot({
+  width,
+  height: Math.max(360, familySummary.length * 43),
+  marginLeft: 150,
+  marginBottom: 48,
+  marginRight: 42,
+  style: {background: "transparent", fontSize: "12px"},
+  x: {label: "Hosted score range", domain: [-0.85, -0.54], grid: true},
+  y: {label: null, domain: familyNames},
+  marks: [
+    Plot.ruleX([-0.62], {stroke: "#738c72", strokeDasharray: "4,5"}),
+    Plot.ruleX([-0.56], {stroke: "#26231f", strokeDasharray: "7,5"}),
+    Plot.ruleY(familySummary, {y: "family", x1: "worst", x2: "best", stroke: (row) => row.family === familyFocus ? "#c65f4c" : "#b8ad9a", strokeWidth: (row) => row.family === familyFocus ? 5 : 3}),
+    Plot.dot(familySummary, {x: "worst", y: "family", fill: "#fffaf0", stroke: "#655f55", r: 4}),
+    Plot.dot(familySummary, {x: "best", y: "family", fill: (row) => row.family === familyFocus ? "#c65f4c" : "#6b879f", r: (row) => row.family === familyFocus ? 8 : 6, tip: true, title: (row) => `${row.family}\n${row.count} finished\nrange ${row.worst.toFixed(2)} to ${row.best.toFixed(2)}`}),
+    Plot.text(familySummary, {x: "best", y: "family", text: (row) => row.best.toFixed(2), dx: 23, fill: "#26231f", fontWeight: 700})
+  ]
+}), "Hosted score ranges and best results by neutral method family.", Math.max(360, familySummary.length * 43)));
+}});
+
+define({id: "05e2ca5a", inputs: ["Inputs","view"], outputs: ["spreadControl","spread"], body: (Inputs,view) => {
+const spreadControl = Inputs.range([0.35, 3], {
+  label: "Probability spread β",
+  value: 1,
+  step: 0.05
+});
+spreadControl.querySelector('input[type="range"]').setAttribute("aria-label", "Probability spread beta");
+const spread = view(spreadControl);
+return {spreadControl,spread};
+}});
+
+define({id: "266e5c55", inputs: ["spread"], outputs: ["toyLabels","toyBase","clamp","logit","sigmoid","toyPredictions","toyLoss","positivePairs","toyAuc","toyRows"], body: (spread) => {
+const toyLabels = [1, 0, 1, 0, 1, 0];
+const toyBase = [0.9, 0.8, 0.7, 0.6, 0.5, 0.4];
+const clamp = (value) => Math.min(0.999, Math.max(0.001, value));
+const logit = (value) => Math.log(value / (1 - value));
+const sigmoid = (value) => 1 / (1 + Math.exp(-value));
+const toyPredictions = toyBase.map((value) => clamp(sigmoid(logit(value) * spread)));
+const toyLoss = -toyLabels.reduce((total, label, index) => total + label * Math.log(toyPredictions[index]) + (1 - label) * Math.log(1 - toyPredictions[index]), 0) / toyLabels.length;
+const positivePairs = [];
+for (let i = 0; i < toyLabels.length; i += 1) for (let j = 0; j < toyLabels.length; j += 1) if (toyLabels[i] === 1 && toyLabels[j] === 0) positivePairs.push(toyPredictions[i] > toyPredictions[j] ? 1 : toyPredictions[i] === toyPredictions[j] ? 0.5 : 0);
+const toyAuc = positivePairs.reduce((sum, value) => sum + value, 0) / positivePairs.length;
+const toyRows = toyPredictions.map((prediction, index) => ({case: `Case ${index + 1}`, prediction, label: toyLabels[index]}));
+return {toyLabels,toyBase,clamp,logit,sigmoid,toyPredictions,toyLoss,positivePairs,toyAuc,toyRows};
+}});
+
+define({id: "fd1b6c44", inputs: ["display","html","spread","toyAuc","toyLoss"], body: (display,html,spread,toyAuc,toyLoss) => {
+display(html`<dl class="proof-strip compact" aria-label="Calibration sandbox metrics">
+  <div><dt>β / SPREAD</dt><dd>${spread.toFixed(2)}</dd></div>
+  <div><dt>AUC-ROC</dt><dd>${toyAuc.toFixed(2)}</dd></div>
+  <div><dt>LOG-LOSS</dt><dd>${toyLoss.toFixed(3)}</dd></div>
+</dl>`);
+}});
+
+define({id: "d0eed41a", inputs: ["display","lazyPlot","width","toyRows"], body: (display,lazyPlot,width,toyRows) => {
+display(lazyPlot((Plot) => Plot.plot({
+  width,
+  height: 320,
+  marginLeft: 58,
+  marginBottom: 48,
+  style: {background: "transparent", fontSize: "12px"},
+  x: {label: null},
+  y: {label: "Predicted probability", domain: [0, 1], grid: true},
+  color: {domain: [0, 1], range: ["#8aa3b9", "#d6725d"], legend: true},
+  marks: [
+    Plot.ruleY([0.5], {stroke: "#26231f", strokeDasharray: "4,4", strokeOpacity: 0.45}),
+    Plot.barY(toyRows, {x: "case", y: "prediction", fill: "label", inset: 12, tip: true, title: (row) => `label ${row.label}\nprobability ${row.prediction.toFixed(3)}`})
+  ]
+}), "Six fixed-ranked predictions whose confidence changes with the probability-spread control.", 320));
+}});
+
+define({id: "bc96e940", inputs: ["Inputs","systemSummary","html","display"], outputs: ["dossierControl","dossierRows","dossierBars","renderDossier"], body: (Inputs,systemSummary,html,display) => {
+const dossierControl = Inputs.radio(["All", "Passed", "Failed", "Timed out"], {
+  label: "Dossier filter",
+  value: "All"
+});
+const dossierRows = [
+  {status: "Passed", count: systemSummary.passed, note: "Completed with recorded output"},
+  {status: "Failed", count: systemSummary.failed, note: "Stopped with a recorded finding"},
+  {status: "Timed out", count: systemSummary.timedOut, note: "Stopped at the runtime limit"}
+];
+const dossierBars = html`<div class="dossier-bars" role="img"></div>`;
+function renderDossier() {
+  const choice = String(dossierControl.value);
+  const rows = choice === "All" ? dossierRows : dossierRows.filter((row) => row.status === choice);
+  dossierBars.dataset.visibleCount = String(rows.length);
+  dossierBars.setAttribute("aria-label", `Recorded managed-run outcomes filtered to ${choice}.`);
+  dossierBars.replaceChildren(...rows.map((row) => html`<div class=${`dossier-row dossier-${row.status.toLowerCase().replaceAll(" ", "-")}`}>
+    <div class="dossier-row-label"><strong>${row.status}</strong><span>${row.note}</span></div>
+    <div class="dossier-track"><i style=${`width:${(row.count / systemSummary.managedRuns) * 100}%`}></i><b>${row.count}</b></div>
+  </div>`));
+}
+dossierControl.addEventListener("input", renderDossier);
+renderDossier();
+display(dossierControl);
+return {dossierControl,dossierRows,dossierBars,renderDossier};
+}});
+
+define({id: "6ae7f24d", inputs: ["display","html","systemSummary"], body: (display,html,systemSummary) => {
+display(html`<dl class="proof-strip" aria-label="Declassified run dossier totals">
+  <div><dt>MANAGED RUNS</dt><dd>${systemSummary.managedRuns}</dd></div>
+  <div><dt>PASSED / FAILED / TIMEOUT</dt><dd>${systemSummary.passed} / ${systemSummary.failed} / ${systemSummary.timedOut}</dd></div>
+  <div><dt>RUN SPECIFICATIONS</dt><dd>${systemSummary.specifications}</dd></div>
+  <div><dt>ARTIFACT PACKS</dt><dd>${systemSummary.artifactPacks}</dd></div>
+</dl>`);
+}});
+
+define({id: "11a650df", inputs: ["display","dossierBars"], body: (display,dossierBars) => {
+display(dossierBars);
+}});
+
+</script>
+</head>
+<body>
+<div id="observablehq-center">
+<header id="observablehq-header">
+<div class="case-header"><a href="#top">CASE 15934</a><span>DECLASSIFIED / PUBLIC COPY</span></div>
+</header>
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Case file</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#result">Result</a></li>
+<li class="observablehq-secondary-link"><a href="#exhibit-a-evaluation-objective">Exhibit A — evaluation objective</a></li>
+<li class="observablehq-secondary-link"><a href="#submission-construction">Submission construction</a></li>
+<li class="observablehq-secondary-link"><a href="#the-submission-record">The submission record</a></li>
+<li class="observablehq-secondary-link"><a href="#calibration-under-fixed-ranking">Calibration under fixed ranking</a></li>
+<li class="observablehq-secondary-link"><a href="#domain-priors-and-revealed-label-anchoring">Domain priors and revealed-label anchoring</a></li>
+<li class="observablehq-secondary-link"><a href="#role-of-redacted">Role of [REDACTED]</a></li>
+<li class="observablehq-secondary-link"><a href="#files-and-sources">Files and sources</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<div class="observablehq observablehq--block"><!--:fa182191:--></div>
+<section id="top" class="file-cover">
+  <div class="file-tab">CASE FILE 15934</div>
+  <div class="filing-line"><span>STATUS: DECLASSIFIED</span><span>COPY: PUBLIC</span><span>DATE FILED: 2026-07-10</span></div>
+  <div class="cover-layout">
+    <aside class="cover-docket" aria-label="Case metadata">
+      <p>SUBJECT</p>
+      <strong>Predictive evaluation under hidden benchmark shift</strong>
+      <p>PRIMARY METRIC</p>
+      <strong>Negative log-loss</strong>
+      <p>DISPOSITION</p>
+      <strong>First place</strong>
+      <p>AUTHOR</p>
+      <strong><span class="scratch-redaction scratch-redaction--docket">Blake / blakem31</span></strong>
+      <div class="stanford-seal-stamp"><img src="./_file/assets/stanford-seal.182b56f7.png" alt="Stanford University seal"></div>
+    </aside>
+    <div class="cover-copy">
+      <p class="type-label">STANFORD AI MEASUREMENT SCIENCE COMPETITION</p>
+      <h1>Declassified Technical Case Study</h1>
+      <p class="dek">First-place submission methodology, calibration analysis, and the role of <span class="redaction" aria-label="redacted private local research system">[REDACTED]</span>.</p>
+      <p class="byline">Filed by <a class="scratch-redaction" href="https://github.com/BlakeMasters" target="_blank" rel="noopener noreferrer">Blake</a> · leaderboard handle <a class="scratch-redaction" href="https://www.codabench.org/profiles/user/blakem31/" target="_blank" rel="noopener noreferrer">blakem31</a></p>
+    </div>
+  </div>
+  <dl class="result-ledger" aria-label="Competition result summary">
+    <div><dt>NEGATIVE LOG-LOSS</dt><dd>−0.56</dd></div>
+    <div><dt>AUC-ROC</dt><dd>0.74</dd></div>
+    <div><dt>FINAL PLACEMENT</dt><dd>#1</dd></div>
+    <div><dt>COMPETITION SUBMISSIONS</dt><dd>5,363</dd></div>
+  </dl>
+  <p class="fine-print">Competition 15934 · predictive evaluation under hidden benchmark shift · public technical record.</p>
+  <div class="coffee-ring" aria-hidden="true"></div>
+  <div class="rubber-stamp" aria-hidden="true">DECLASSIFIED<br><small>PUBLIC COPY</small></div>
+  <div class="folio">COVER / FILE 15934</div>
+</section>
+<div class="page-break"><span>FOLIO 01</span><i aria-hidden="true"></i></div>
+<h2 id="result" tabindex="-1"><a class="observablehq-header-anchor" href="#result">Result</a></h2>
+<p><span class="scratch-redaction"><code>blakem31</code></span> placed <strong>first</strong> in the <a href="https://www.codabench.org/competitions/15934/#/results-tab" target="_blank" rel="noopener noreferrer">AIMS Predictive Evaluation Competition</a>, with a final negative log-loss of <strong>−0.56</strong> and AUC-ROC of <strong>0.74</strong>. The local search record contains <strong>280 submissions</strong>, of which <strong>278 finished</strong>.</p>
+<div class="margin-note"><strong>DISPOSITION</strong><br>Competition placement: #1.<br>Case status: declassified.</div>
+<h2 id="exhibit-a-evaluation-objective" tabindex="-1"><a class="observablehq-header-anchor" href="#exhibit-a-evaluation-objective">Exhibit A — evaluation objective</a></h2>
+<p>For each hidden row <em>i</em>, the submission returned a probability <em>p<sub>i</sub></em> that the evaluated model would answer correctly. The binary outcome <em>y<sub>i</sub></em> is one for a correct response and zero otherwise. The hosted score was the mean Bernoulli log-likelihood over <em>n</em> rows:</p>
+<figure class="equation-exhibit">
+  <figcaption><span>EXHIBIT A</span><strong>Hosted score</strong></figcaption>
+  <div class="equation-body">
+    <math display="block" aria-label="Score equals one over n times the sum of y sub i log p sub i plus one minus y sub i times log of one minus p sub i.">
+      <mi>𝒮</mi><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac>
+      <munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover>
+      <mo>[</mo><msub><mi>y</mi><mi>i</mi></msub><mtext> log </mtext><mo>(</mo><msub><mi>p</mi><mi>i</mi></msub><mo>)</mo>
+      <mo>+</mo><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><mo>)</mo><mtext> log </mtext><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub><mo>)</mo><mo>]</mo>
+    </math>
+  </div>
+  <p>A larger value is better because the score is non-positive and approaches zero as assigned probability concentrates on the observed outcome. Incorrect high-confidence predictions contribute large negative terms. The objective therefore evaluates both discrimination and probability calibration.</p>
+</figure>
+<div class="symbol-ledger" aria-label="Metric symbols">
+  <div><code>pᵢ</code><span>predicted probability for row <em>i</em></span></div>
+  <div><code>yᵢ</code><span>observed binary outcome</span></div>
+  <div><code>𝒮</code><span>negative mean log-likelihood shown by Codabench</span></div>
+</div>
+<p>AUC-ROC depends only on ordering: any monotone transformation of the probabilities preserves the ranking. Negative log-loss does not. Two submissions can produce the same ordering and different scores when their probability scales differ. This distinction determined the final method.</p>
+<div class="page-break"><span>FOLIO 02 / HOSTED EVIDENCE</span><i aria-hidden="true"></i></div>
+<h2 id="submission-construction" tabindex="-1"><a class="observablehq-header-anchor" href="#submission-construction">Submission construction</a></h2>
+<p>Each candidate was implemented as a runtime script with a small static artifact. The script received the visible subject, benchmark, condition, item content, and the labels revealed for that hosted run. It returned one clipped probability per hidden row.</p>
+<ol class="method-sequence">
+  <li><span>01</span><div><strong>Specify</strong><p>Define a probability estimator, its calibration parameters, and the evidence it may use at runtime.</p></div></li>
+  <li><span>02</span><div><strong>Compile</strong><p>Estimate subject and domain statistics from public data, then serialize only the tables required by the runtime.</p></div></li>
+  <li><span>03</span><div><strong>Validate</strong><p>Package the script and artifact, verify the submission contract, and run a local smoke test.</p></div></li>
+  <li><span>04</span><div><strong>Evaluate</strong><p>Submit the package, record the hosted score and status, and use that evidence to select the next hypothesis.</p></div></li>
+</ol>
+<p>The cycle moved from global centers and subject priors to text features, ranking ensembles, compact domain priors, and finally revealed-label anchoring. Submission scripts were the experimental unit: each package fixed a method, its parameters, and its runtime evidence boundary.</p>
+<h2 id="the-submission-record" tabindex="-1"><a class="observablehq-header-anchor" href="#the-submission-record">The submission record</a></h2>
+<p>The chart below accounts for every finished local evaluation without printing 278 rows down the page. Each faint mark is one hosted result.</p>
+<div class="observablehq observablehq--block"><!--:f3be066d:--></div>
+<div class="observablehq observablehq--block"><!--:32ca5310:--></div>
+<div class="observablehq observablehq--block"><!--:0aee8586:--></div>
+<div class="observablehq observablehq--block"><!--:30b775a3:--></div>
+<div class="chart-key" aria-label="Chart key"><span class="key-envelope">10th–90th percentile envelope</span><span class="key-median">rolling median</span><span class="key-frontier">best on record</span></div>
+<p>The finished evaluations span <strong>−0.83 to −0.56</strong>. The first −0.56 occurs at sequence <observablehq-loading></observablehq-loading><!--:2cdbb16b:-->; a −0.83 result occurs near the end of the record. The late-stage variance shows that small changes to anchoring and correction strength materially changed log-loss.</p>
+<h3 id="method-family-comparison" tabindex="-1"><a class="observablehq-header-anchor" href="#method-family-comparison">Method-family comparison</a></h3>
+<p>Select a method family to highlight its hosted score range. The plot includes the range and best result for every family.</p>
+<div class="observablehq observablehq--block"><!--:381d5bdf:--></div>
+<div class="observablehq observablehq--block"><!--:4c37b713:--></div>
+<div class="observablehq observablehq--block"><!--:75c69991:--></div>
+<div class="observablehq observablehq--block"><!--:ffef9e39:--></div>
+<p>The compact and calibrated families established a −0.62 plateau. Ranking stacks, semantic features, item memory, trees, and forecast ensembles were built as early methods for testing submissions based on different algorithmic approaches.</p>
+<div class="page-break"><span>FOLIO 03 / CALIBRATION</span><i aria-hidden="true"></i></div>
+<h2 id="calibration-under-fixed-ranking" tabindex="-1"><a class="observablehq-header-anchor" href="#calibration-under-fixed-ranking">Calibration under fixed ranking</a></h2>
+<p>Two calibration operations recur throughout the submission search. Shrinkage controls the variance of estimates supported by few observations. Logit rescaling controls the confidence of an ordered set of predictions.</p>
+<figure class="equation-exhibit">
+  <figcaption><span>EXHIBIT B</span><strong>Shrink a group estimate</strong></figcaption>
+  <div class="equation-body">
+    <math display="block" aria-label="Shrink y bar sub g with support n sub g toward c with strength tau.">
+      <mtext>shrink</mtext><mo>(</mo><msub><mover><mi>y</mi><mo>¯</mo></mover><mi>g</mi></msub><mo>,</mo><msub><mi>n</mi><mi>g</mi></msub><mo>;</mo><mi>c</mi><mo>,</mo><mi>τ</mi><mo>)</mo><mo>=</mo>
+      <mfrac><mrow><msub><mi>n</mi><mi>g</mi></msub><msub><mover><mi>y</mi><mo>¯</mo></mover><mi>g</mi></msub><mo>+</mo><mi>τ</mi><mi>c</mi></mrow><mrow><msub><mi>n</mi><mi>g</mi></msub><mo>+</mo><mi>τ</mi></mrow></mfrac>
+    </math>
+  </div>
+  <p>Here, <em>ȳ<sub>g</sub></em> is the observed success rate for group <em>g</em>, <em>n<sub>g</sub></em> is its sample size, <em>c</em> is a broader base rate, and <em>τ</em> is the prior strength. The estimate is a weighted mean of group evidence and the base rate. When <em>n<sub>g</sub></em> is small, the estimate remains near <em>c</em>; as support increases, it approaches the group mean. This reduced variance in subject, domain, and revealed-label estimates.</p>
+</figure>
+<figure class="equation-exhibit">
+  <figcaption><span>EXHIBIT C</span><strong>Change spread, keep order</strong></figcaption>
+  <div class="equation-body">
+    <math display="block" aria-label="P prime equals sigmoid of alpha plus beta times logit of p.">
+      <msup><mi>p</mi><mo>′</mo></msup><mo>=</mo><mi>σ</mi><mo>(</mo><mi>α</mi><mo>+</mo><mi>β</mi><mtext> logit</mtext><mo>(</mo><mi>p</mi><mo>)</mo><mo>)</mo>
+    </math>
+  </div>
+  <p>The logit transform maps a probability to the real line. The intercept <em>α</em> shifts the global center and the slope <em>β</em> changes spread before the sigmoid maps the value back to a probability. Values of <em>β</em> below one move predictions toward the center; values above one increase confidence. For positive <em>β</em>, the rank order is unchanged, but log-loss changes.</p>
+</figure>
+<p>The sandbox uses six predictions with fixed ordering. Adjusting <em>β</em> isolates the effect of probability scale: AUC-ROC remains constant while log-loss changes.</p>
+<div class="observablehq observablehq--block"><!--:05e2ca5a:--></div>
+<div class="observablehq observablehq--block"><!--:266e5c55:--></div>
+<div class="observablehq observablehq--block"><!--:fd1b6c44:--></div>
+<div class="observablehq observablehq--block"><!--:d0eed41a:--></div>
+<p>The ordering is unchanged; the probability estimates are not.</p>
+<div class="page-break"><span>FOLIO 04 / FINAL METHOD</span><i aria-hidden="true"></i></div>
+<h2 id="domain-priors-and-revealed-label-anchoring" tabindex="-1"><a class="observablehq-header-anchor" href="#domain-priors-and-revealed-label-anchoring">Domain priors and revealed-label anchoring</a></h2>
+<p>The hidden benchmarks were absent from public training data. Exact item lookup and benchmark-specific effects could therefore fail under distribution shift. The stable fallback used coarse item domains and subject ability as priors rather than as direct hidden-benchmark identifiers.</p>
+<figure class="equation-exhibit">
+  <figcaption><span>EXHIBIT D-0</span><strong>Compact domain prior</strong></figcaption>
+  <div class="equation-body">
+    <math display="block" aria-label="Domain effect delta k equals n k over n k plus tau d times group mean y k minus c. Subject effect a s is defined analogously. The prior probability is the clipped sum of c, weighted subject effect, and weighted domain effect.">
+      <msub><mi>δ</mi><mi>k</mi></msub><mo>=</mo><mfrac><msub><mi>n</mi><mi>k</mi></msub><mrow><msub><mi>n</mi><mi>k</mi></msub><mo>+</mo><msub><mi>τ</mi><mi>d</mi></msub></mrow></mfrac><mo>(</mo><msub><mover><mi>y</mi><mo>¯</mo></mover><mi>k</mi></msub><mo>−</mo><mi>c</mi><mo>)</mo>
+      <mo>,</mo><mspace width="1em"></mspace><msub><mi>a</mi><mi>s</mi></msub><mo>=</mo><mfrac><msub><mi>n</mi><mi>s</mi></msub><mrow><msub><mi>n</mi><mi>s</mi></msub><mo>+</mo><msub><mi>τ</mi><mi>s</mi></msub></mrow></mfrac><mo>(</mo><msub><mover><mi>y</mi><mo>¯</mo></mover><mi>s</mi></msub><mo>−</mo><mi>c</mi><mo>)</mo>
+      <mspace width="1em"></mspace><mo>;</mo><mspace width="1em"></mspace><msubsup><mi>p</mi><mrow><mi>s</mi><mo>,</mo><mi>i</mi></mrow><mtext>prior</mtext></msubsup><mo>=</mo><mtext>clip</mtext><mo>(</mo><mi>c</mi><mo>+</mo><msub><mi>w</mi><mi>a</mi></msub><msub><mi>a</mi><mi>s</mi></msub><mo>+</mo><msub><mi>w</mi><mi>d</mi></msub><mi>d</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>)</mo>
+    </math>
+  </div>
+  <p>The center <em>c</em> is the global correctness rate. The domain effect <em>δ<sub>k</sub></em> measures how a coarse item family differs from that center, with sample-size shrinkage controlled by <em>τ<sub>d</sub></em>. The subject effect <em>a<sub>s</sub></em> is estimated in the same way. For item <em>i</em>, <em>d(i)</em> aggregates its domain indicators. The clipped weighted sum defines a finite fallback probability when no useful revealed labels are available.</p>
+</figure>
+<p>The first-place family used random revealed labels to estimate the base rate of the hidden run. It then refined that estimate through a hierarchy of visible groupings and applied a bounded family-relative subject correction.</p>
+<figure class="equation-exhibit">
+  <figcaption><span>EXHIBIT D-1</span><strong>Estimate a revealed-label anchor</strong></figcaption>
+  <div class="equation-body">
+    <math display="block" aria-label="M sub g equals s sub g plus alpha over n sub g plus two alpha; ell sub g equals logit of m sub g.">
+      <msub><mi>m</mi><mi>g</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>s</mi><mi>g</mi></msub><mo>+</mo><mi>α</mi></mrow><mrow><msub><mi>n</mi><mi>g</mi></msub><mo>+</mo><mn>2</mn><mi>α</mi></mrow></mfrac>
+      <mo>,</mo><mspace width="1.5em"></mspace><msub><mi>ℓ</mi><mi>g</mi></msub><mo>=</mo><mtext>logit</mtext><mo>(</mo><msub><mi>m</mi><mi>g</mi></msub><mo>)</mo>
+    </math>
+  </div>
+  <p>For group <em>g</em>, <em>s<sub>g</sub></em> is the number of revealed successes and <em>n<sub>g</sub></em> is the number of revealed labels. The pseudo-count <em>α</em> prevents rates of exactly zero or one. Converting the smoothed rate <em>m<sub>g</sub></em> to logit space permits additive shrinkage and subject corrections.</p>
+</figure>
+<figure class="equation-exhibit">
+  <figcaption><span>EXHIBIT D-2</span><strong>Limit small-sample confidence</strong></figcaption>
+  <div class="equation-body">
+    <math display="block" aria-label="Shrunk ell sub g equals w sub g ell sub g plus one minus w sub g times the shrunk parent ell; w sub g equals n sub g over n sub g plus tau.">
+      <msub><mover><mi>ℓ</mi><mo>~</mo></mover><mi>g</mi></msub><mo>=</mo><msub><mi>w</mi><mi>g</mi></msub><msub><mi>ℓ</mi><mi>g</mi></msub><mo>+</mo><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>w</mi><mi>g</mi></msub><mo>)</mo><msub><mover><mi>ℓ</mi><mo>~</mo></mover><mrow><mtext>parent</mtext><mo>(</mo><mi>g</mi><mo>)</mo></mrow></msub>
+      <mo>,</mo><mspace width="1.5em"></mspace><msub><mi>w</mi><mi>g</mi></msub><mo>=</mo><mfrac><msub><mi>n</mi><mi>g</mi></msub><mrow><msub><mi>n</mi><mi>g</mi></msub><mo>+</mo><mi>τ</mi></mrow></mfrac>
+    </math>
+  </div>
+  <p>The hierarchy proceeds from the pooled revealed sample to domain family, item signature, benchmark, and benchmark-condition groups. The weight <em>w<sub>g</sub></em> is determined by support: a small child group remains close to its parent, while a well-supported group contributes more of its own logit. The selected configuration used <em>α = 1</em> and <em>τ = 4</em>.</p>
+</figure>
+<figure class="equation-exhibit final-equation">
+  <figcaption><span>EXHIBIT D-3</span><strong>Final probability</strong></figcaption>
+  <div class="equation-body">
+    <math display="block" aria-label="Z sub s i equals the shrunk anchor logit minus beta times the mean revealed subject offset plus beta times the target family-relative subject offset; p sub s i equals sigmoid of z sub s i.">
+      <msub><mi>z</mi><mrow><mi>s</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>=</mo><msub><mover><mi>ℓ</mi><mo>~</mo></mover><mrow><msup><mi>g</mi><mo>*</mo></msup><mo>(</mo><mi>i</mi><mo>)</mo></mrow></msub><mo>−</mo><mi>β</mi><msub><mover><mi>o</mi><mo>¯</mo></mover><mi>L</mi></msub><mo>+</mo><mi>β</mi><msub><mi>o</mi><mrow><mi>s</mi><mo>,</mo><mi>f</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow></msub>
+      <mo>,</mo><mspace width="1.5em"></mspace><msub><mi>p</mi><mrow><mi>s</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>=</mo><mi>σ</mi><mo>(</mo><msub><mi>z</mi><mrow><mi>s</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>)</mo>
+    </math>
+  </div>
+  <p>The anchor <em>ℓ̃<sub>g*(i)</sub></em> is the most specific supported revealed-label estimate for item <em>i</em>. The mean offset <em>ō<sub>L</sub></em> removes bias caused by the subject composition of the revealed sample. The target offset <em>o<sub>s,f(i)</sub></em> restores the expected ability of subject <em>s</em> relative to item family <em>f(i)</em>. The bounded coefficient <em>β = 0.60</em> controls both corrections, and the sigmoid produces the final probability.</p>
+</figure>
+<div class="symbol-ledger" aria-label="Final method symbols">
+  <div><code>ℓ̃g*</code><span>shrunk hidden-run base-rate logit</span></div>
+  <div><code>ōL</code><span>mean subject offset in the revealed sample</span></div>
+  <div><code>os,f</code><span>target subject’s family-relative offset</span></div>
+  <div><code>β</code><span>bounded correction strength</span></div>
+</div>
+<p>The runtime applied the anchored estimate whenever revealed-label support was available and otherwise returned the compact domain prior. This separation provided a stable no-label baseline while allowing the hidden-run evidence to determine the final probability center.</p>
+<div class="page-break"><span>FOLIO 05 / [REDACTED]</span><i aria-hidden="true"></i></div>
+<h2 id="role-of-redacted" tabindex="-1"><a class="observablehq-header-anchor" href="#role-of-redacted">Role of [REDACTED]</a></h2>
+<p class="redacted-lede"><span class="redaction" aria-label="redacted private project">[REDACTED]</span> is a project I had been developing for several months. The competition provided a suitable external test: repeated research runs, constrained execution, measurable outcomes, and artifacts that had to remain interpretable across iterations.</p>
+<p><code>[REDACTED]</code> is a local system for specifying, executing, and reviewing technical work. A run begins from declared inputs and parameters. Execution status, evidence, and artifact references remain attached to that specification, so a result can be inspected without reconstructing the terminal session that produced it.</p>
+<p>During the competition, <code>[REDACTED]</code> became the operational layer for late-stage experiments. It preserved the relationship between a hypothesis, the submission package built from it, the execution result, and the evidence used for the next decision. This converted an ad hoc submission process into a reproducible research loop.</p>
+<p>The recorded late-stage cycle contains 11 managed runs, six run specifications, and six artifact packs. Seven runs passed, three failed, and one reached its time limit. Every outcome remained available for review.</p>
+<div class="observablehq observablehq--block"><!--:bc96e940:--></div>
+<div class="observablehq observablehq--block"><!--:6ae7f24d:--></div>
+<div class="observablehq observablehq--block"><!--:11a650df:--></div>
+<div class="page-break"><span>FOLIO 06 / REFERENCES</span><i aria-hidden="true"></i></div>
+<h2 id="files-and-sources" tabindex="-1"><a class="observablehq-header-anchor" href="#files-and-sources">Files and sources</a></h2>
+<ul>
+<li><a href="https://www.codabench.org/competitions/15934/#/results-tab" target="_blank" rel="noopener noreferrer">Live competition leaderboard</a></li>
+<li><a href="https://github.com/BlakeMasters/aims-competition/tree/main/submission/source" target="_blank" rel="noopener noreferrer">Representative submission source</a></li>
+<li><a href="https://github.com/BlakeMasters/aims-competition" target="_blank" rel="noopener noreferrer">Repository</a></li>
+</ul>
+<div class="end-file"><span>END OF PUBLIC COPY</span><span>CASE FILE 15934</span><span>DECLASSIFIED</span></div>
+</main>
+<footer id="observablehq-footer">
+<div><div class="case-footer"><span>Filed by <span class="scratch-redaction">Blake</span></span><span>Case file 15934</span></div></div>
+</footer>
+</div>
+</body>
+</html>

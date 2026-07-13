@@ -1,53 +1,41 @@
-# AIMS Predictive Evaluation Competition
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme-hero-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme-hero-light.svg">
+  <img alt="Declassified technical case study for competition 15934" src="assets/readme-hero-light.svg">
+</picture>
 
-Clean publication repository for the Codabench Predictive Evaluation Competition.
+# Declassified Technical Case Study
 
-## Final Result
+First-place submission methodology for the AIMS Predictive Evaluation Competition, including calibration analysis, hosted evaluation evidence, and the role of `[REDACTED]`.
 
-- Selected submission: `submission/submission_anchor_fam_b60_debias.zip`
-- Hosted negative log-loss: `-0.57`
-- Approximate log-loss: `0.57`
-- Competition-reported AUC-ROC: `0.73`
-- Competition placement: top 5 overall, tied for 3rd at the time of repository update
-- Method family: revealed-label anchored base-rate model
+[Read the interactive case study](https://blakemasters.github.io/aims-competition/)
 
-The final method uses the platform's random revealed labels to estimate a hidden-run base rate, then applies a moderate family-aware subject correction. It falls back to the compact domain prior when useful labels are unavailable. It does not use exact public item memory, tree/forecast ensembles, or an active adaptive-labeling policy.
+## Result
 
-## Repository Contents
+| Result | Value |
+| --- | ---: |
+| Placement | `#1` |
+| Negative log-loss | `-0.56` |
+| AUC-ROC | `0.74` |
+| Competition activity | 122 participants, 5,363 submissions |
 
-- `submission/`
-  - `submission_anchor_fam_b60_debias.zip`: uploadable final competition ZIP.
-  - `source/`: extracted final submission source for inspection.
-- `unused_submissions/`
-  - Alternate submission ZIPs archived for auditability, excluding the selected final ZIP.
-- `report/`
-  - `main.pdf`: technical report.
-  - `main.tex`, `references.bib`: report source.
-  - `figures/`, `tables/`: generated report artifacts.
-- `results/`
-  - `eval_finals.txt`: hosted submission results used by the report.
-  - `hosted_results_clean.csv`, `family_summary.csv`: parsed result tables.
-- `tools/`
-  - Minimal starter-kit validation tools for ZIP contract and smoke tests.
-- `sample_data/`
-  - Tiny starter-kit sample files required by the smoke test.
+[`blakem31`](https://www.codabench.org/profiles/user/blakem31/) placed first with a negative log-loss of `-0.56` and AUC-ROC of `0.74`.
 
-## Validation
+The case study covers the hidden-evaluation objective, construction of submission runtimes, 278 finished local evaluations, compact domain priors, revealed-label anchoring, and the research system presented as `[REDACTED]`.
 
-From the repository root:
+## Repository files
+
+- [`submission/`](submission/) contains representative submission source and a validated package.
+- [`results/`](results/) contains hosted evaluation evidence.
+- [`site/`](site/) contains the audited static case-study build served by GitHub Pages.
+
+## Checks
 
 ```powershell
 python tools/check_submission_zip.py submission/submission_anchor_fam_b60_debias.zip
 python tools/run_smoke_test.py submission/source
 ```
 
-To rebuild the report PDF from source:
+## Publication boundary
 
-```powershell
-cd report
-tectonic main.tex
-```
-
-## Publication Scope
-
-This clean repository intentionally excludes exploratory submission ZIPs, validation extraction folders, Python caches, raw downloaded benchmark data, virtual environments, and iterative analysis artifacts. The report explains the broader method search without requiring those working files.
+The public files contain no hidden product name, private path, raw late-stage filename, or private build source. `[REDACTED]` is rendered literally throughout the publication.
