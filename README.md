@@ -7,7 +7,7 @@
 # Declassified Technical Case Study
 
 First-place submission methodology for the AIMS Predictive Evaluation Competition, including calibration analysis, hosted evaluation evidence, and the role of `[REDACTED]`.
-
+This is a collection of submissions prior to final cycles submitted to the competition. They are intended to demonstrate the flow of progress and documented changes.
 [Read the interactive case study](https://blakemasters.github.io/aims-competition/)
 
 ## Result
