@@ -19,7 +19,7 @@ This is a collection of submissions prior to final cycles submitted to the compe
 | AUC-ROC | `0.74` |
 | Competition activity | 122 participants, 5,363 submissions |
 
-[`blakem31`](https://www.codabench.org/profiles/user/blakem31/) placed first with a negative log-loss of `-0.56` and AUC-ROC of `0.74`.
+`blakem31` placed first with a negative log-loss of `-0.56` and AUC-ROC of `0.74`. The [archived standings](https://blakemasters.github.io/aims-competition/#archived-standings) preserve the scores shown in the retained competition screenshot.
 
 The case study covers the hidden-evaluation objective, construction of submission runtimes, 278 finished local evaluations, compact domain priors, revealed-label anchoring, and the research system presented as `[REDACTED]`.
 
