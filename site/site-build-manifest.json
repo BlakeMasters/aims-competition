@@ -1,8 +1,9 @@
 {
   "schemaVersion": 1,
   "framework": "Observable Framework 1.13.4",
-  "builtAt": "2026-07-12T23:21:07.943Z",
+  "builtAt": "2026-10-01T21:44:07.238Z",
   "leaderboardObservedAt": "2026-07-10",
+  "archivedStandingsSnapshotThrough": "2026-06-14",
   "localResultsSnapshotThrough": "2026-06-22",
-  "bundleSha256": "91b24699e6a83125810a39ba0a98ca2eabd254b2c2c4fd244be1b46afaed06c1"
+  "bundleSha256": "000cb2e43feb008d0ea18d2b8eecf7390c353163bcff0e347c25397a20c442ab"
 }
